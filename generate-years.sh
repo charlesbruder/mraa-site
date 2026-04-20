@@ -1,0 +1,402 @@
+#!/bin/bash
+# Generate 59 individual year pages for MRAA history section
+# Filled years (8): 1995, 2000, 2003, 2008, 2015, 2019, 2022, 2026
+# Empty years (51): everything else 1968-2025
+
+set -e
+
+OUT_DIR="history"
+mkdir -p "$OUT_DIR"
+
+# ============================================================
+# Shared nav (for subdirectory pages — uses ../ prefix)
+# ============================================================
+NAV_AND_MOBILE='  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo"><div class="nav__logo-text">MRAA <span>Mizzou Rugby Alumni Association</span></div></a>
+      <div class="nav__links">
+        <a href="../index.html">Home</a>
+        <a href="../alumni.html">Alumni</a>
+        <a href="../about.html">About</a>
+        <a href="../events.html">Events</a>
+        <a href="../donate.html">Donate</a>
+        <a href="../sponsors.html">Sponsors</a>
+        <a href="../news.html">News</a>
+        <a href="../shop.html">Shop</a>
+        <a href="../team.html">Team</a>
+        <a href="../history.html" class="active">History</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+      <a href="../alumni.html" class="btn btn--primary btn--sm nav__cta">Join the Network</a>
+      <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile-overlay">
+    <a href="../index.html">Home</a><a href="../alumni.html">Alumni</a><a href="../about.html">About</a><a href="../events.html">Events</a>
+    <a href="../donate.html">Donate</a><a href="../sponsors.html">Sponsors</a><a href="../news.html">News</a><a href="../shop.html">Shop</a>
+    <a href="../team.html">Team</a><a href="../history.html" class="active">History</a><a href="../contact.html">Contact</a>
+    <a href="../alumni.html" class="btn btn--primary" style="margin-top:1rem;">Join the Network</a>
+  </div>'
+
+FOOTER='  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="nav__logo-text" style="color:var(--color-gold);">MRAA <span style="color:rgba(255,255,255,0.6);">Mizzou Rugby Alumni Association</span></div>
+          <p>Connecting generations of Mizzou Rugby. Supporting the present. Building the future.</p>
+          <div class="social-links"><a href="#" class="social-link">FB</a><a href="#" class="social-link">IG</a><a href="#" class="social-link">X</a><a href="#" class="social-link">LI</a></div>
+        </div>
+        <div class="footer__col"><h4>Quick Links</h4><a href="../index.html">Home</a><a href="../about.html">About</a><a href="../alumni.html">Alumni</a><a href="../news.html">News</a><a href="../history.html">History</a></div>
+        <div class="footer__col"><h4>Get Involved</h4><a href="../donate.html">Donate</a><a href="../events.html">Events</a><a href="../sponsors.html">Sponsors</a><a href="../contact.html">Volunteer</a><a href="../shop.html">Shop</a></div>
+        <div class="footer__col"><h4>Resources</h4><a href="../team.html">Current Team</a><a href="../events.html">Schedule</a><a href="../privacy-policy.html">Privacy Policy</a><a href="../contact.html">Contact Us</a></div>
+        <div class="footer__col footer__newsletter"><h4>Newsletter</h4><p>Get updates delivered to your inbox.</p><form class="footer__newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email"><button class="btn btn--primary btn--sm">Go</button></form></div>
+      </div>
+      <div class="footer__bottom"><span>&copy; 2026 Mizzou Rugby Alumni Association. All rights reserved.</span><a href="../privacy-policy.html">Privacy Policy</a></div>
+    </div>
+  </footer>'
+
+# ============================================================
+# Build year-nav (prev/next) based on year
+# ============================================================
+build_year_nav() {
+  local year=$1
+  local prev=$((year - 1))
+  local next=$((year + 1))
+  local left_link=""
+  local right_link=""
+
+  if [ $year -gt 1968 ]; then
+    left_link="<a href=\"${prev}.html\">← ${prev} Season</a>"
+  else
+    left_link="<span></span>"
+  fi
+
+  if [ $year -lt 2026 ]; then
+    right_link="<a href=\"${next}.html\">${next} Season →</a>"
+  else
+    right_link="<span></span>"
+  fi
+
+  cat <<EOF
+  <section class="container" style="padding:0 var(--space-lg);">
+    <div class="year-nav">
+      ${left_link}
+      <a href="../history.html" class="year-nav__center">Back to History</a>
+      ${right_link}
+    </div>
+  </section>
+EOF
+}
+
+# ============================================================
+# FILLED YEAR TEMPLATE
+# ============================================================
+build_filled_page() {
+  local year=$1
+  local wins=$2
+  local losses=$3
+  local finish=$4
+  local achievement=$5
+  local year_nav=$(build_year_nav $year)
+
+  cat > "$OUT_DIR/${year}.html" <<EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${year} Season | Mizzou Rugby Alumni Association</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+${NAV_AND_MOBILE}
+
+  <!-- HERO -->
+  <section class="hero hero--sub">
+    <div class="hero__bg">PLACEHOLDER IMAGE — ${year} SEASON</div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <span class="hero__tag">${achievement}</span>
+      <h1 class="hero__title">${year} Mizzou Rugby</h1>
+      <p class="hero__subtitle">Season Record: ${wins}-${losses}</p>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-bar__grid">
+        <div class="stats-bar__item"><h3>${wins}</h3><p>Wins</p></div>
+        <div class="stats-bar__item"><h3>${losses}</h3><p>Losses</p></div>
+        <div class="stats-bar__item"><h3>${finish}</h3><p>Conference Finish</p></div>
+        <div class="stats-bar__item"><h3>${year}</h3><p>Season</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM PHOTO -->
+  <section class="section--sm" style="padding:0;">
+    <div class="placeholder-img placeholder-img--wide" style="min-height:320px;">TEAM PHOTO — ${year} SEASON</div>
+  </section>
+
+  <!-- ROSTER -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="section-header"><h2>${year} Roster</h2><div class="section-header__bar"></div></div>
+      <table class="roster-table">
+        <thead><tr><th>Name</th><th>Position</th><th>Year</th><th>Hometown</th></tr></thead>
+        <tbody>
+          <tr><td>Anderson, Mike</td><td>Flanker</td><td>Sr</td><td>Kansas City, MO</td></tr>
+          <tr><td>Baker, Tom</td><td>Lock</td><td>Jr</td><td>St. Louis, MO</td></tr>
+          <tr><td>Carter, James</td><td>Flyhalf</td><td>Sr</td><td>Columbia, MO</td></tr>
+          <tr><td>Davis, Robert</td><td>Hooker</td><td>So</td><td>Springfield, IL</td></tr>
+          <tr><td>Evans, Chris</td><td>Prop</td><td>Jr</td><td>Omaha, NE</td></tr>
+          <tr><td>Fischer, Dan</td><td>Wing</td><td>Sr</td><td>Dallas, TX</td></tr>
+          <tr><td>Garcia, Alex</td><td>Center</td><td>So</td><td>Memphis, TN</td></tr>
+          <tr><td>Harris, Kevin</td><td>No. 8</td><td>Jr</td><td>Chicago, IL</td></tr>
+          <tr><td>Jackson, Ryan</td><td>Scrumhalf</td><td>Sr</td><td>Jefferson City, MO</td></tr>
+          <tr><td>Kelly, Brian</td><td>Lock</td><td>So</td><td>Tulsa, OK</td></tr>
+          <tr><td>Lewis, Mark</td><td>Prop</td><td>Fr</td><td>Des Moines, IA</td></tr>
+          <tr><td>Miller, Steve</td><td>Fullback</td><td>Jr</td><td>Little Rock, AR</td></tr>
+          <tr><td>Nelson, Paul</td><td>Flanker</td><td>Sr</td><td>Minneapolis, MN</td></tr>
+          <tr><td>O'Brien, Sean</td><td>Wing</td><td>So</td><td>Denver, CO</td></tr>
+          <tr><td>Parker, David</td><td>Center</td><td>Jr</td><td>Indianapolis, IN</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- COACHING STAFF -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header"><h2>Coaching Staff</h2><div class="section-header__bar"></div></div>
+      <div class="grid grid--3">
+        <div class="person-card"><div class="person-card__photo">PHOTO</div><h3 class="person-card__name">[NAME]</h3><p class="person-card__role">Head Coach</p><p class="person-card__info">Led the ${year} team to a ${wins}-${losses} record.</p></div>
+        <div class="person-card"><div class="person-card__photo">PHOTO</div><h3 class="person-card__name">[NAME]</h3><p class="person-card__role">Assistant Coach</p><p class="person-card__info">Forward play and set-piece strategy.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEASON RESULTS -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="section-header"><h2>Season Results</h2><div class="section-header__bar"></div></div>
+      <table class="roster-table">
+        <thead><tr><th>Date</th><th>Opponent</th><th>Score</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>Sep 2</td><td>Oklahoma</td><td>28 - 14</td><td>W</td></tr>
+          <tr><td>Sep 16</td><td>Kansas</td><td>35 - 10</td><td>W</td></tr>
+          <tr><td>Sep 30</td><td>at Iowa State</td><td>21 - 17</td><td>W</td></tr>
+          <tr><td>Oct 7</td><td>Nebraska</td><td>42 - 7</td><td>W</td></tr>
+          <tr><td>Oct 14</td><td>at Kansas State</td><td>14 - 21</td><td>L</td></tr>
+          <tr><td>Oct 28</td><td>Arkansas</td><td>24 - 19</td><td>W</td></tr>
+          <tr><td>Nov 4</td><td>at Illinois</td><td>31 - 12</td><td>W</td></tr>
+          <tr><td>Nov 11</td><td>Iowa</td><td>17 - 24</td><td>L</td></tr>
+          <tr><td>Nov 18</td><td>Missouri State</td><td>38 - 5</td><td>W</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PHOTOS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header"><h2>Photos</h2><div class="section-header__bar"></div></div>
+      <div class="photo-grid">
+        <div class="photo-grid__item">ACTION PHOTO</div>
+        <div class="photo-grid__item">TEAM CELEBRATION</div>
+        <div class="photo-grid__item">MATCH DAY</div>
+        <div class="photo-grid__item">ALUMNI EVENT</div>
+        <div class="photo-grid__item">TRAINING</div>
+        <div class="photo-grid__item">AWARDS CEREMONY</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALUMNI STORIES -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="section-header"><h2>Memories from ${year}</h2><div class="section-header__bar"></div></div>
+      <div style="max-width:800px;margin:0 auto;">
+        <div class="story-card">
+          <p class="story-card__text">"That ${year} season was one of the most memorable years of my life. The bond we built on and off the pitch carried us through every match."</p>
+          <p class="story-card__attribution">[NAME] — <span>Class of $((year + 1))</span></p>
+        </div>
+        <div class="story-card">
+          <p class="story-card__text">"I'll never forget beating Nebraska at home. The crowd was electric and every player gave everything for Mizzou Rugby."</p>
+          <p class="story-card__attribution">[NAME] — <span>Class of $((year + 1))</span></p>
+        </div>
+        <div class="story-card">
+          <p class="story-card__text">"The friendships, the discipline, the brotherhood we built that year have lasted more than two decades and counting."</p>
+          <p class="story-card__attribution">[NAME] — <span>Class of $((year + 1))</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HELP COMPLETE / SUBMIT INFO -->
+  <section class="section" id="submit-info">
+    <div class="container">
+      <div class="section-header"><h2>Help Complete This Page</h2><p>Have photos, roster corrections, or stories from the ${year} season? Submit them below.</p><div class="section-header__bar"></div></div>
+      <!-- GHL FORM: History Submission → Pipeline: Alumni Content -->
+      <form class="form" style="margin:0 auto;" onsubmit="return false;">
+        <div class="form-group"><label class="form-label" for="h-type">What are you submitting?</label>
+          <select class="form-select" id="h-type">
+            <option>Roster Correction</option>
+            <option>Photo</option>
+            <option>Story / Memory</option>
+            <option>Season Record</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="h-name">Your Name</label><input class="form-input" id="h-name"></div>
+          <div class="form-group"><label class="form-label" for="h-email">Email</label><input class="form-input" id="h-email" type="email"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="h-class">Class Year</label><input class="form-input" id="h-class"></div>
+          <div class="form-group"><label class="form-label" for="h-played">Years Played</label><input class="form-input" id="h-played"></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="h-details">Details / Correction</label><textarea class="form-textarea" id="h-details" rows="5"></textarea></div>
+        <div class="form-group"><label class="form-label">Photo Upload</label><div class="form-file">📎 Click or drag files here to upload</div></div>
+        <button type="submit" class="btn btn--primary">Submit</button>
+      </form>
+    </div>
+  </section>
+
+${year_nav}
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div class="cta-banner__text"><h2>Be Part of the Legacy</h2><p>Your support — in any form — makes a difference.</p></div>
+        <div class="btn-group"><a href="../donate.html" class="btn btn--dark">Donate</a><a href="../alumni.html" class="btn btn--outline-dark">Join the Network</a></div>
+      </div>
+    </div>
+  </section>
+
+${FOOTER}
+
+  <!-- FLOATING SUBMIT BUTTON -->
+  <a href="#submit-info" class="floating-btn">📝 Submit Info</a>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
+EOF
+}
+
+# ============================================================
+# EMPTY YEAR TEMPLATE
+# ============================================================
+build_empty_page() {
+  local year=$1
+  local year_nav=$(build_year_nav $year)
+
+  cat > "$OUT_DIR/${year}.html" <<EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${year} Season | Mizzou Rugby Alumni Association</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+${NAV_AND_MOBILE}
+
+  <!-- HERO -->
+  <section class="hero hero--sub">
+    <div class="hero__bg">PLACEHOLDER IMAGE — ${year} SEASON</div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">${year} Mizzou Rugby</h1>
+      <p class="hero__subtitle">Season Record: Coming Soon</p>
+    </div>
+  </section>
+
+  <!-- EMPTY STATE -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="empty-state">
+        <div class="empty-state__icon">🏉</div>
+        <h2 class="empty-state__title">This Page Needs Your Help</h2>
+        <p class="empty-state__text">We don't have records for the ${year} season yet. If you played, coached, or have photos and stories from this year, help us preserve the legacy of Mizzou Rugby.</p>
+        <a href="#submit-info" class="btn btn--primary btn--lg">Submit Information</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBMIT INFO FORM -->
+  <section class="section" id="submit-info">
+    <div class="container">
+      <div class="section-header"><h2>Share Your ${year} Season</h2><p>Roster info, season records, photos, stories — every detail helps.</p><div class="section-header__bar"></div></div>
+      <!-- GHL FORM: History Submission → Pipeline: Alumni Content -->
+      <form class="form" style="margin:0 auto;" onsubmit="return false;">
+        <div class="form-group"><label class="form-label" for="h-type">What are you submitting?</label>
+          <select class="form-select" id="h-type">
+            <option>Roster Information</option>
+            <option>Season Record / Results</option>
+            <option>Photos</option>
+            <option>Stories / Memories</option>
+            <option>Coaching Staff</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="h-name">Your Name</label><input class="form-input" id="h-name"></div>
+          <div class="form-group"><label class="form-label" for="h-email">Email</label><input class="form-input" id="h-email" type="email"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="h-class">Class Year</label><input class="form-input" id="h-class"></div>
+          <div class="form-group"><label class="form-label" for="h-played">Years Played</label><input class="form-input" id="h-played"></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="h-info">Information to Share</label><textarea class="form-textarea" id="h-info" rows="6" placeholder="Roster names, record, notable games, memories..."></textarea></div>
+        <div class="form-group"><label class="form-label">Photo Upload</label><div class="form-file">📎 Click or drag files here to upload</div></div>
+        <button type="submit" class="btn btn--primary">Submit Information</button>
+      </form>
+    </div>
+  </section>
+
+${year_nav}
+
+${FOOTER}
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
+EOF
+}
+
+# ============================================================
+# Generate all 59 pages
+# ============================================================
+
+# Filled years: year, wins, losses, conference_finish, achievement_tag
+build_filled_page 1995 7 4 "2nd" "Midwest Regional Champions"
+build_filled_page 2000 8 3 "3rd" "Strong Season"
+build_filled_page 2003 9 2 "1st" "Conference Champions"
+build_filled_page 2008 10 2 "1st" "National Semifinalists"
+build_filled_page 2015 11 1 "1st" "Conference Champions"
+build_filled_page 2019 10 0 "1st" "Undefeated Regular Season"
+build_filled_page 2022 9 3 "2nd" "National Quarterfinals"
+build_filled_page 2026 8 2 "2nd" "Current Season"
+
+# Empty years: everything else 1968-2025
+FILLED="1995 2000 2003 2008 2015 2019 2022 2026"
+for year in $(seq 1968 2026); do
+  if ! echo "$FILLED" | grep -qw "$year"; then
+    build_empty_page $year
+  fi
+done
+
+echo "Generated: $(ls $OUT_DIR/*.html | wc -l | tr -d ' ') year pages"
