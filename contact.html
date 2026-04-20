@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | MRAA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-text">MRAA <span>Mizzou Rugby Alumni Association</span></div>
+      </a>
+      <div class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="alumni.html">Alumni</a>
+        <a href="about.html">About</a>
+        <a href="events.html">Events</a>
+        <a href="donate.html">Donate</a>
+        <a href="sponsors.html">Sponsors</a>
+        <a href="news.html">News</a>
+        <a href="shop.html">Shop</a>
+        <a href="team.html">Team</a>
+        <a href="history.html">History</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+      <a href="alumni.html" class="btn btn--primary btn--sm nav__cta">Join the Network</a>
+      <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile-overlay">
+    <a href="index.html">Home</a>
+    <a href="alumni.html">Alumni</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="donate.html">Donate</a>
+    <a href="sponsors.html">Sponsors</a>
+    <a href="news.html">News</a>
+    <a href="shop.html">Shop</a>
+    <a href="team.html">Team</a>
+    <a href="history.html">History</a>
+    <a href="contact.html">Contact</a>
+    <a href="alumni.html" class="btn btn--primary" style="margin-top:1rem;">Join the Network</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero hero--sub">
+    <div class="hero__bg">PLACEHOLDER IMAGE — CONTACT HEADER</div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Get Involved</h1>
+      <p class="hero__subtitle">Have questions or want to help? Reach out &mdash; we'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- THREE WAYS -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Three Ways to Get Involved</h2>
+        <div class="section-header__bar"></div>
+      </div>
+      <div class="grid grid--3">
+        <div class="involve-card">
+          <div class="involve-card__icon">&#128176;</div>
+          <h3>Donate</h3>
+          <p>Support travel, equipment, and opportunities for current players.</p>
+          <a href="donate.html" class="btn btn--primary btn--sm">Donate</a>
+        </div>
+        <div class="involve-card">
+          <div class="involve-card__icon">&#128587;</div>
+          <h3>Volunteer</h3>
+          <p>Share your time and talents with the MRAA community.</p>
+          <a href="#volunteer-form" class="btn btn--primary btn--sm">Volunteer</a>
+        </div>
+        <div class="involve-card">
+          <div class="involve-card__icon">&#129309;</div>
+          <h3>Sponsor</h3>
+          <p>Partner with Mizzou Rugby and reach our alumni network.</p>
+          <a href="sponsors.html" class="btn btn--primary btn--sm">Sponsor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <h2>Send Us a Message</h2>
+        <div class="section-header__bar"></div>
+      </div>
+      <!-- GHL FORM: Contact → Pipeline: General Inquiries -->
+      <form class="form" onsubmit="return false;">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="ct-first">First Name</label><input class="form-input" type="text" id="ct-first"></div>
+          <div class="form-group"><label class="form-label" for="ct-last">Last Name</label><input class="form-input" type="text" id="ct-last"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="ct-phone">Phone</label><input class="form-input" type="tel" id="ct-phone"></div>
+          <div class="form-group"><label class="form-label" for="ct-email">Email</label><input class="form-input" type="email" id="ct-email"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ct-subject">Subject</label>
+          <select class="form-input" id="ct-subject">
+            <option>General</option>
+            <option>Alumni Network</option>
+            <option>Events</option>
+            <option>Sponsorship</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label" for="ct-msg">Message</label><textarea class="form-textarea" id="ct-msg"></textarea></div>
+        <button type="submit" class="btn btn--primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- VOLUNTEER FORM -->
+  <section class="section section--light" id="volunteer-form">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <h2>Volunteer With Us</h2>
+        <div class="section-header__bar"></div>
+      </div>
+      <!-- GHL FORM: Volunteer → Pipeline: Volunteer Interest -->
+      <form class="form" onsubmit="return false;">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="v-first">First Name</label><input class="form-input" type="text" id="v-first"></div>
+          <div class="form-group"><label class="form-label" for="v-last">Last Name</label><input class="form-input" type="text" id="v-last"></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="v-email">Email</label><input class="form-input" type="email" id="v-email"></div>
+        <div class="form-group"><label class="form-label" for="v-phone">Phone</label><input class="form-input" type="tel" id="v-phone"></div>
+        <div class="form-group">
+          <label class="form-label">Area of Interest</label>
+          <div class="form-checkboxes">
+            <label><input type="checkbox"> Board of Directors</label>
+            <label><input type="checkbox"> Event Volunteer</label>
+            <label><input type="checkbox"> Committee Member</label>
+            <label><input type="checkbox"> Coaching Support</label>
+            <label><input type="checkbox"> Other</label>
+          </div>
+        </div>
+        <div class="form-group"><label class="form-label" for="v-about">Tell us about yourself</label><textarea class="form-textarea" id="v-about"></textarea></div>
+        <button type="submit" class="btn btn--primary">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="section">
+    <div class="container text-center">
+      <div class="section-header">
+        <h2>Connect With Us</h2>
+        <div class="section-header__bar"></div>
+      </div>
+      <div class="social-links" style="justify-content:center;">
+        <a href="#" class="social-link" aria-label="Facebook">FB</a>
+        <a href="#" class="social-link" aria-label="Instagram">IG</a>
+        <a href="#" class="social-link" aria-label="Twitter/X">X</a>
+        <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+      </div>
+      <p style="margin-top:var(--space-lg);"><a href="#">Join our LinkedIn group &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div class="cta-banner__text">
+          <h2>Be Part of the Future of Mizzou Rugby</h2>
+          <p>Your support &mdash; in any form &mdash; makes a difference.</p>
+        </div>
+        <div class="btn-group">
+          <a href="donate.html" class="btn btn--dark">Donate</a>
+          <a href="contact.html" class="btn btn--outline-dark">Get Involved</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="nav__logo-text" style="color:var(--color-gold);">MRAA <span style="color:rgba(255,255,255,0.6);">Mizzou Rugby Alumni Association</span></div>
+          <p>Connecting generations of Mizzou Rugby. Supporting the present. Building the future.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="Twitter/X">X</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="alumni.html">Alumni</a>
+          <a href="news.html">News</a>
+          <a href="history.html">History</a>
+        </div>
+        <div class="footer__col">
+          <h4>Get Involved</h4>
+          <a href="donate.html">Donate</a>
+          <a href="events.html">Events</a>
+          <a href="sponsors.html">Sponsors</a>
+          <a href="contact.html">Volunteer</a>
+          <a href="shop.html">Shop</a>
+        </div>
+        <div class="footer__col">
+          <h4>Resources</h4>
+          <a href="team.html">Current Team</a>
+          <a href="events.html">Schedule</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer__col footer__newsletter">
+          <h4>Newsletter</h4>
+          <p>Get the latest news and updates delivered to your inbox.</p>
+          <form class="footer__newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email" aria-label="Email for newsletter">
+            <button type="submit" class="btn btn--primary btn--sm">Go</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Mizzou Rugby Alumni Association. All rights reserved.</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

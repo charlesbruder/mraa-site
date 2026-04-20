@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Golf Outing | MRAA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-text">MRAA <span>Mizzou Rugby Alumni Association</span></div>
+      </a>
+      <div class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="alumni.html">Alumni</a>
+        <a href="about.html">About</a>
+        <a href="events.html" class="active">Events</a>
+        <a href="donate.html">Donate</a>
+        <a href="sponsors.html">Sponsors</a>
+        <a href="news.html">News</a>
+        <a href="shop.html">Shop</a>
+        <a href="team.html">Team</a>
+        <a href="history.html">History</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a href="alumni.html" class="btn btn--primary btn--sm nav__cta">Join the Network</a>
+      <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile-overlay">
+    <a href="index.html">Home</a>
+    <a href="alumni.html">Alumni</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="donate.html">Donate</a>
+    <a href="sponsors.html">Sponsors</a>
+    <a href="news.html">News</a>
+    <a href="shop.html">Shop</a>
+    <a href="team.html">Team</a>
+    <a href="history.html">History</a>
+    <a href="contact.html">Contact</a>
+    <a href="alumni.html" class="btn btn--primary" style="margin-top:1rem;">Join the Network</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero hero--sub">
+    <div class="hero__bg">PLACEHOLDER IMAGE — GOLF OUTING</div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Annual Alumni Golf Outing</h1>
+      <p class="hero__subtitle">June 15, 2026 · Columbia Country Club</p>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="section">
+    <div class="container">
+      <div class="split">
+        <div class="split__text">
+          <h2>About This Event</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel rugby pitch memories, alumni gathering under the Missouri sun. Nullam at ex ac velit rutrum efficitur. Aenean et ligula vitae ante dictum dignissim eget ut turpis. The Annual Alumni Golf Outing brings together generations of Mizzou Rugby players for a day of competition, conversation, and camaraderie.</p>
+          <p>Maecenas congue est vitae dui faucibus, nec faucibus nisl porttitor. Registration includes green fees, cart, boxed lunch, and post-round reception. Prizes awarded for longest drive, closest to the pin, and overall low score. Integer ac enim sed augue porta egestas. Quisque sit amet sapien ut urna placerat blandit.</p>
+          <p>Proceeds from the outing support travel expenses, equipment, and scholarship opportunities for the current Mizzou Rugby team. Whether you're a scratch golfer or haven't swung a club in years, come out for a great day and a great cause. Curabitur eget tortor at tellus ornare fringilla nec nec odio.</p>
+        </div>
+        <div>
+          <div style="border:2px solid var(--color-black);padding:var(--space-lg);background:#fff;">
+            <h3 style="margin-top:0;">RSVP</h3>
+            <form class="form" onsubmit="return false;">
+              <div class="form-row">
+                <div class="form-group"><label class="form-label" for="ed-first">First Name</label><input class="form-input" type="text" id="ed-first"></div>
+                <div class="form-group"><label class="form-label" for="ed-last">Last Name</label><input class="form-input" type="text" id="ed-last"></div>
+              </div>
+              <div class="form-group"><label class="form-label" for="ed-email">Email</label><input class="form-input" type="email" id="ed-email"></div>
+              <div class="form-group"><label class="form-label" for="ed-phone">Phone</label><input class="form-input" type="tel" id="ed-phone"></div>
+              <div class="form-group">
+                <label class="form-label" for="ed-guests">Number of Guests</label>
+                <select class="form-input" id="ed-guests">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div class="form-group"><label class="form-label" for="ed-diet">Dietary Restrictions (optional)</label><textarea class="form-textarea" id="ed-diet"></textarea></div>
+              <button type="submit" class="btn btn--primary">Submit RSVP</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Location</h2>
+        <div class="section-header__bar"></div>
+      </div>
+      <div style="height:300px;background:#e5e5e5;display:flex;align-items:center;justify-content:center;color:#666;font-weight:600;letter-spacing:0.05em;" class="map-placeholder">GOOGLE MAP PLACEHOLDER</div>
+      <p class="text-center" style="margin-top:var(--space-md);"><strong>Columbia Country Club</strong><br>2210 N Country Club Dr, Columbia, MO 65202</p>
+    </div>
+  </section>
+
+  <!-- BACK LINK -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <a href="events.html" class="btn btn--outline-dark btn--sm">&larr; Back to Events</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="nav__logo-text" style="color:var(--color-gold);">MRAA <span style="color:rgba(255,255,255,0.6);">Mizzou Rugby Alumni Association</span></div>
+          <p>Connecting generations of Mizzou Rugby. Supporting the present. Building the future.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="Twitter/X">X</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="alumni.html">Alumni</a>
+          <a href="news.html">News</a>
+          <a href="history.html">History</a>
+        </div>
+        <div class="footer__col">
+          <h4>Get Involved</h4>
+          <a href="donate.html">Donate</a>
+          <a href="events.html">Events</a>
+          <a href="sponsors.html">Sponsors</a>
+          <a href="contact.html">Volunteer</a>
+          <a href="shop.html">Shop</a>
+        </div>
+        <div class="footer__col">
+          <h4>Resources</h4>
+          <a href="team.html">Current Team</a>
+          <a href="events.html">Schedule</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer__col footer__newsletter">
+          <h4>Newsletter</h4>
+          <p>Get the latest news and updates delivered to your inbox.</p>
+          <form class="footer__newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email" aria-label="Email for newsletter">
+            <button type="submit" class="btn btn--primary btn--sm">Go</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Mizzou Rugby Alumni Association. All rights reserved.</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sponsors | MRAA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-text">MRAA <span>Mizzou Rugby Alumni Association</span></div>
+      </a>
+      <div class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="alumni.html">Alumni</a>
+        <a href="about.html">About</a>
+        <a href="events.html">Events</a>
+        <a href="donate.html">Donate</a>
+        <a href="sponsors.html" class="active">Sponsors</a>
+        <a href="news.html">News</a>
+        <a href="shop.html">Shop</a>
+        <a href="team.html">Team</a>
+        <a href="history.html">History</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a href="alumni.html" class="btn btn--primary btn--sm nav__cta">Join the Network</a>
+      <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile-overlay">
+    <a href="index.html">Home</a>
+    <a href="alumni.html">Alumni</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="donate.html">Donate</a>
+    <a href="sponsors.html">Sponsors</a>
+    <a href="news.html">News</a>
+    <a href="shop.html">Shop</a>
+    <a href="team.html">Team</a>
+    <a href="history.html">History</a>
+    <a href="contact.html">Contact</a>
+    <a href="alumni.html" class="btn btn--primary" style="margin-top:1rem;">Join the Network</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero hero--sub">
+    <div class="hero__bg">PLACEHOLDER IMAGE — SPONSORS HEADER</div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Partner With Mizzou Rugby</h1>
+      <p class="hero__subtitle">Become part of the Mizzou Rugby community</p>
+      <div class="btn-group">
+        <a href="#sponsor-form" class="btn btn--primary btn--lg">Become a Sponsor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSOR TIERS DISPLAY -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Sponsors</h2>
+        <div class="section-header__bar"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-xl);">
+        <div class="sponsor-tier">
+          <p class="sponsor-tier__label" style="text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:var(--space-md);text-align:center;">Title Sponsor</p>
+          <div class="sponsor-logos" style="justify-content:center;">
+            <div class="sponsor-logo sponsor-logo--lg">Title Sponsor Logo</div>
+          </div>
+        </div>
+        <div class="sponsor-tier">
+          <p class="sponsor-tier__label" style="text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:var(--space-md);text-align:center;">Gold Sponsors</p>
+          <div class="sponsor-logos">
+            <div class="sponsor-logo">Sponsor Logo</div>
+            <div class="sponsor-logo">Sponsor Logo</div>
+            <div class="sponsor-logo">Sponsor Logo</div>
+          </div>
+        </div>
+        <div class="sponsor-tier">
+          <p class="sponsor-tier__label" style="text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:var(--space-md);text-align:center;">Silver Sponsors</p>
+          <div class="sponsor-logos">
+            <div class="sponsor-logo">Sponsor Logo</div>
+            <div class="sponsor-logo">Sponsor Logo</div>
+            <div class="sponsor-logo">Sponsor Logo</div>
+            <div class="sponsor-logo">Sponsor Logo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY SPONSOR -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Sponsor Mizzou Rugby</h2>
+        <div class="section-header__bar"></div>
+      </div>
+      <div class="grid grid--3">
+        <div class="icon-card">
+          <div class="icon-card__icon">&#127919;</div>
+          <h3 class="icon-card__title">Brand Visibility</h3>
+          <p class="icon-card__text">Reach engaged alumni, families, and students throughout Missouri and beyond through our events, digital channels, and matchday presence.</p>
+        </div>
+        <div class="icon-card">
+          <div class="icon-card__icon">&#128205;</div>
+          <h3 class="icon-card__title">Logo Placement</h3>
+          <p class="icon-card__text">Feature your brand on team kits, banners at Stankowski Field, event signage, our website, and across alumni communications.</p>
+        </div>
+        <div class="icon-card">
+          <div class="icon-card__icon">&#129309;</div>
+          <h3 class="icon-card__title">Direct Connection</h3>
+          <p class="icon-card__text">Build relationships with a proud community of Mizzou Rugby alumni — professionals, business owners, and future leaders across every industry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BECOME A SPONSOR FORM -->
+  <section class="section" id="sponsor-form">
+    <div class="container">
+      <div class="section-header">
+        <h2>Interested in Sponsoring?</h2>
+        <div class="section-header__bar"></div>
+      </div>
+      <!-- GHL FORM: Sponsor Inquiry → Pipeline: Sponsor Outreach -->
+      <form class="form" style="margin:0 auto;" onsubmit="return false;">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="sp-first">First Name</label><input class="form-input" type="text" id="sp-first"></div>
+          <div class="form-group"><label class="form-label" for="sp-last">Last Name</label><input class="form-input" type="text" id="sp-last"></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="sp-company">Company Name</label><input class="form-input" type="text" id="sp-company"></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="sp-email">Email</label><input class="form-input" type="email" id="sp-email"></div>
+          <div class="form-group"><label class="form-label" for="sp-phone">Phone</label><input class="form-input" type="tel" id="sp-phone"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sp-tier">Sponsorship Tier Interest</label>
+          <select class="form-input" id="sp-tier">
+            <option value="title">Title</option>
+            <option value="gold">Gold</option>
+            <option value="silver">Silver</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label" for="sp-msg">Message</label><textarea class="form-textarea" id="sp-msg"></textarea></div>
+        <button type="submit" class="btn btn--primary">Submit Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div class="cta-banner__text">
+          <h2>Be Part of the Future of Mizzou Rugby</h2>
+          <p>Your support — in any form — makes a difference.</p>
+        </div>
+        <div class="btn-group">
+          <a href="donate.html" class="btn btn--dark">Donate</a>
+          <a href="contact.html" class="btn btn--outline-dark">Get Involved</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="nav__logo-text" style="color:var(--color-gold);">MRAA <span style="color:rgba(255,255,255,0.6);">Mizzou Rugby Alumni Association</span></div>
+          <p>Connecting generations of Mizzou Rugby. Supporting the present. Building the future.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="Twitter/X">X</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="alumni.html">Alumni</a>
+          <a href="news.html">News</a>
+          <a href="history.html">History</a>
+        </div>
+        <div class="footer__col">
+          <h4>Get Involved</h4>
+          <a href="donate.html">Donate</a>
+          <a href="events.html">Events</a>
+          <a href="sponsors.html">Sponsors</a>
+          <a href="contact.html">Volunteer</a>
+          <a href="shop.html">Shop</a>
+        </div>
+        <div class="footer__col">
+          <h4>Resources</h4>
+          <a href="team.html">Current Team</a>
+          <a href="events.html">Schedule</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer__col footer__newsletter">
+          <h4>Newsletter</h4>
+          <p>Get the latest news and updates delivered to your inbox.</p>
+          <form class="footer__newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email" aria-label="Email for newsletter">
+            <button type="submit" class="btn btn--primary btn--sm">Go</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Mizzou Rugby Alumni Association. All rights reserved.</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

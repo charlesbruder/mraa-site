@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events | Mizzou Rugby Alumni Association</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-text">MRAA <span>Mizzou Rugby Alumni Association</span></div>
+      </a>
+      <div class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="alumni.html">Alumni</a>
+        <a href="about.html">About</a>
+        <a href="events.html" class="active">Events</a>
+        <a href="donate.html">Donate</a>
+        <a href="sponsors.html">Sponsors</a>
+        <a href="news.html">News</a>
+        <a href="shop.html">Shop</a>
+        <a href="team.html">Team</a>
+        <a href="history.html">History</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a href="alumni.html" class="btn btn--primary btn--sm nav__cta">Join the Network</a>
+      <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile-overlay">
+    <a href="index.html">Home</a>
+    <a href="alumni.html">Alumni</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="donate.html">Donate</a>
+    <a href="sponsors.html">Sponsors</a>
+    <a href="news.html">News</a>
+    <a href="shop.html">Shop</a>
+    <a href="team.html">Team</a>
+    <a href="history.html">History</a>
+    <a href="contact.html">Contact</a>
+    <a href="alumni.html" class="btn btn--primary" style="margin-top:1rem;">Join the Network</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero hero--sub">
+    <div class="hero__bg">PLACEHOLDER IMAGE — EVENTS HEADER</div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Stay Connected Through Events</h1>
+      <p class="hero__subtitle">Join fellow Mizzou Rugby alumni at our upcoming events.</p>
+    </div>
+  </section>
+
+  <!-- UPCOMING EVENTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Upcoming Events</h2>
+        <div class="section-header__bar"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-lg);">
+        <div class="event-card">
+          <div class="event-card__image">PLACEHOLDER IMAGE</div>
+          <div class="event-card__body">
+            <p class="event-card__date">June 15, 2026</p>
+            <h3 class="event-card__title">Annual Alumni Golf Outing</h3>
+            <p class="event-card__location">Columbia Country Club, Columbia, MO</p>
+            <p class="event-card__text">Join fellow alumni for a day on the course. Includes lunch, prizes, and plenty of stories from the pitch. All skill levels welcome — bring your A-game or just come for the camaraderie.</p>
+            <div class="btn-group">
+              <a href="event-detail.html" class="btn btn--primary btn--sm">Learn More</a>
+              <a href="event-detail.html" class="btn btn--outline-dark btn--sm">RSVP</a>
+            </div>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card__image">PLACEHOLDER IMAGE</div>
+          <div class="event-card__body">
+            <p class="event-card__date">October 3–4, 2026</p>
+            <h3 class="event-card__title">Alumni Rugby Weekend</h3>
+            <p class="event-card__location">Stankowski Field, Columbia, MO</p>
+            <p class="event-card__text">The annual alumni vs. current team match. Watch the current squad, reconnect with old teammates, and celebrate Mizzou Rugby with a full weekend of events.</p>
+            <div class="btn-group">
+              <a href="event-detail.html" class="btn btn--primary btn--sm">Learn More</a>
+              <a href="event-detail.html" class="btn btn--outline-dark btn--sm">RSVP</a>
+            </div>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card__image">PLACEHOLDER IMAGE</div>
+          <div class="event-card__body">
+            <p class="event-card__date">November 21, 2026</p>
+            <h3 class="event-card__title">End of Season Banquet</h3>
+            <p class="event-card__location">Stoney Creek Hotel, Columbia, MO</p>
+            <p class="event-card__text">Celebrate the conclusion of the 2026 season. Awards, recognition, and a night to honor the current team and connect with the broader Mizzou Rugby community.</p>
+            <div class="btn-group">
+              <a href="event-detail.html" class="btn btn--primary btn--sm">Learn More</a>
+              <a href="event-detail.html" class="btn btn--outline-dark btn--sm">RSVP</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST EVENTS -->
+  <section class="section section--light">
+    <div class="container text-center">
+      <h2 style="margin-bottom:var(--space-md);">Looking for past events?</h2>
+      <a href="#" class="btn btn--outline-dark">View Past Events</a>
+    </div>
+  </section>
+
+  <!-- EMAIL BAR -->
+  <section class="email-bar">
+    <div class="container">
+      <div class="email-bar__inner">
+        <p class="email-bar__text">Stay up to date with Mizzou Rugby</p>
+        <form class="email-bar__form" onsubmit="return false;">
+          <input type="email" placeholder="Enter your email" aria-label="Email address">
+          <button type="submit" class="btn btn--primary btn--sm">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP FORM -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Want to be notified about events?</h2>
+        <div class="section-header__bar"></div>
+      </div>
+      <!-- GHL FORM: RSVP → Pipeline: Event RSVPs -->
+      <form class="form" style="margin:0 auto;" onsubmit="return false;">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="r-first">First Name</label><input class="form-input" type="text" id="r-first"></div>
+          <div class="form-group"><label class="form-label" for="r-last">Last Name</label><input class="form-input" type="text" id="r-last"></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="r-email">Email</label><input class="form-input" type="email" id="r-email"></div>
+        <div class="form-group"><label class="form-label" for="r-phone">Phone</label><input class="form-input" type="tel" id="r-phone"></div>
+        <div class="form-group">
+          <label class="form-label" style="display:flex;align-items:center;gap:0.5rem;">
+            <input type="checkbox" id="r-consent">
+            <span>I consent to receive event updates and communications from MRAA.</span>
+          </label>
+        </div>
+        <button type="submit" class="btn btn--primary">Notify Me</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div class="cta-banner__text">
+          <h2>Be Part of the Future of Mizzou Rugby</h2>
+          <p>Your support — in any form — makes a difference.</p>
+        </div>
+        <div class="btn-group">
+          <a href="donate.html" class="btn btn--dark">Donate</a>
+          <a href="contact.html" class="btn btn--outline-dark">Get Involved</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="nav__logo-text" style="color:var(--color-gold);">MRAA <span style="color:rgba(255,255,255,0.6);">Mizzou Rugby Alumni Association</span></div>
+          <p>Connecting generations of Mizzou Rugby. Supporting the present. Building the future.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="Twitter/X">X</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="alumni.html">Alumni</a>
+          <a href="news.html">News</a>
+          <a href="history.html">History</a>
+        </div>
+        <div class="footer__col">
+          <h4>Get Involved</h4>
+          <a href="donate.html">Donate</a>
+          <a href="events.html">Events</a>
+          <a href="sponsors.html">Sponsors</a>
+          <a href="contact.html">Volunteer</a>
+          <a href="shop.html">Shop</a>
+        </div>
+        <div class="footer__col">
+          <h4>Resources</h4>
+          <a href="team.html">Current Team</a>
+          <a href="events.html">Schedule</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer__col footer__newsletter">
+          <h4>Newsletter</h4>
+          <p>Get the latest news and updates delivered to your inbox.</p>
+          <form class="footer__newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email" aria-label="Email for newsletter">
+            <button type="submit" class="btn btn--primary btn--sm">Go</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Mizzou Rugby Alumni Association. All rights reserved.</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
