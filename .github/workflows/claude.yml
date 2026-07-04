@@ -37,7 +37,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          # Allow Claude to open/update PRs so every change request becomes a
-          # reviewable pull request (which Netlify turns into a deploy preview).
+          # Full tool list: file editing + git + gh pr commands so every change
+          # request becomes a reviewable pull request (which Netlify turns into
+          # a deploy preview). NOTE: --allowed-tools REPLACES the action's
+          # defaults, so file-edit tools must be listed explicitly.
           claude_args: |
-            --allowed-tools "Bash(gh pr create:*),Bash(gh pr edit:*),Bash(gh pr comment:*),Bash(gh pr view:*)"
+            --allowed-tools "Edit,MultiEdit,Write,Glob,Grep,LS,Read,Bash(git add:*),Bash(git commit:*),Bash(git checkout:*),Bash(git branch:*),Bash(git push:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git rm:*),Bash(gh pr create:*),Bash(gh pr edit:*),Bash(gh pr comment:*),Bash(gh pr view:*)"
