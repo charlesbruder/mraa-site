@@ -1,0 +1,12 @@
+# MRAA static site — no build step, publish repo root
+[build]
+  publish = "."
+  command = ""
+
+# Deploy Previews are enabled by default for pull requests.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
