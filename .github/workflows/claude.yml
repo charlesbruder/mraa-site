@@ -43,3 +43,7 @@ jobs:
           # defaults, so file-edit tools must be listed explicitly.
           claude_args: |
             --allowed-tools "Edit,MultiEdit,Write,Glob,Grep,LS,Read,Bash(git add:*),Bash(git commit:*),Bash(git checkout:*),Bash(git branch:*),Bash(git push:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git rm:*),Bash(gh pr create:*),Bash(gh pr edit:*),Bash(gh pr comment:*),Bash(gh pr view:*)"
+
+      - name: Debug — print execution output on error
+        if: always()
+        run: cat /home/runner/work/_temp/claude-execution-output.json || true
