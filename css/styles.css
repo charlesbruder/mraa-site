@@ -171,11 +171,11 @@ h4 { font-size: 1.25rem; }
 }
 .nav__logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
 .nav__logo-img {
-  height: 42px;
+  height: 58px;
   width: auto;
   background: var(--color-white);
   border-radius: var(--border-radius);
-  padding: 3px;
+  padding: 4px;
 }
 .nav__logo-text {
   font-weight: var(--font-weight-bold);
