@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>How to Update the Website — MRAA Site Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #FDB719; --black: #000; --bg: #F5F5F5; --text: #1A1A1A;
+      --muted: #6B7280; --border: #E5E7EB; --gold-bg: rgba(253,183,25,0.15);
+      --green: #15803D; --green-bg: #DCFCE7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter','Helvetica Neue',Arial,sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+    header { background: var(--black); color: #fff; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    header .brand strong { color: var(--gold); font-weight: 900; letter-spacing: 0.05em; font-size: 1.1rem; display: block; }
+    header .brand span { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: #ccc; }
+    header a { color: var(--gold); font-size: 0.85rem; text-decoration: none; }
+    main { max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 1.75rem; margin-bottom: 1.25rem; }
+    h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.05rem; font-weight: 700; margin: 1.4rem 0 0.5rem; }
+    h2:first-of-type { margin-top: 0; }
+    p, li { font-size: 0.95rem; color: #333; }
+    p.lead { color: var(--muted); margin-bottom: 0; }
+    ol.steps { list-style: none; counter-reset: step; margin-top: 0.5rem; }
+    ol.steps > li { counter-increment: step; position: relative; padding: 0 0 1.1rem 3rem; }
+    ol.steps > li::before {
+      content: counter(step); position: absolute; left: 0; top: 0;
+      width: 2rem; height: 2rem; border-radius: 50%; background: var(--gold);
+      color: var(--black); font-weight: 700; display: flex; align-items: center; justify-content: center;
+    }
+    ol.steps strong { display: block; margin-bottom: 0.15rem; }
+    ul { padding-left: 1.25rem; }
+    ul li { margin-bottom: 0.4rem; }
+    .example { background: var(--gold-bg); border-left: 3px solid var(--gold); padding: 0.7rem 1rem; margin: 0.6rem 0; font-size: 0.9rem; font-style: italic; }
+    .good { color: var(--green); font-weight: 600; }
+    .pill { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.15rem 0.55rem; border-radius: 999px; }
+    .pill--working { background: #E5E7EB; color: #374151; }
+    .pill--ready { background: var(--gold-bg); color: #92600A; border: 1px solid var(--gold); }
+    .pill--published { background: var(--green-bg); color: var(--green); }
+    table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.9rem; }
+    td { padding: 0.5rem 0.6rem; border-top: 1px solid var(--border); vertical-align: top; }
+    @media print { header a { display: none; } body { background: #fff; } .card { border: none; padding: 0.5rem 0; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><strong>MRAA</strong><span>Site Manager Guide</span></div>
+    <a href="/admin/">← Back to Site Manager</a>
+  </header>
+  <main>
+
+    <div class="card">
+      <h1>How to update the website</h1>
+      <p class="lead">Anyone on the board can update the MRAA website — no technical skills needed. You describe the change in plain English, a helper makes it, you check a preview, and nothing goes live until you approve it.</p>
+    </div>
+
+    <div class="card">
+      <h2>The five steps</h2>
+      <ol class="steps">
+        <li><strong>Sign in</strong> Go to <b>mraa-rugby.netlify.app/admin</b> and enter the board password. (Ask Michael if you need it.)</li>
+        <li><strong>Describe your change</strong> Type what you want in the box, like you're leaving a note for a helpful volunteer. Attach photos if you have them. Click <b>Send request</b>.</li>
+        <li><strong>Wait a few minutes</strong> Your request appears below with <span class="pill pill--working">Working on it</span>. This usually takes 2–5 minutes. You can close the page and come back later — it keeps working.</li>
+        <li><strong>Check the preview</strong> When it says <span class="pill pill--ready">Ready to preview</span>, click <b>View preview</b>. You'll see the whole website with your change in it. This preview is private — the real site hasn't changed yet.</li>
+        <li><strong>Decide</strong> Happy with it? Click <b>Publish to live site</b> — it's on the real website about a minute later. Want it different? Click <b>Ask for changes</b> and say what to fix. Changed your mind? Click <b>Discard</b> and it's like it never happened.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Writing a good request</h2>
+      <p>Include the details you'd want if someone asked you to do it: what, where, when, and any exact wording that matters.</p>
+      <div class="example">"Add a news post: the annual alumni weekend is October 10–12 in Columbia. Registration opens August 1 at 9am. Use the attached photo. Mention that Friday night is at Harpo's."</div>
+      <div class="example">"On the Events page, change the Old Boys' Game date from September 5 to September 19."</div>
+      <div class="example">"Add Smith &amp; Sons Roofing as a sponsor. Their website is smithandsonsroofing.com. Logo attached."</div>
+      <p style="margin-top:0.8rem">Vague requests get a guess — <span class="good">"Add the golf outing on Sept 12 at Columbia Country Club, $75 per player"</span> works better than "add the golf thing."</p>
+    </div>
+
+    <div class="card">
+      <h2>What the statuses mean</h2>
+      <table>
+        <tr><td><span class="pill pill--working">Working on it</span></td><td>Your change is being made. Usually 2–5 minutes.</td></tr>
+        <tr><td><span class="pill pill--ready">Ready to preview</span></td><td>Done! Click <b>View preview</b>, then publish, adjust, or discard.</td></tr>
+        <tr><td><span class="pill pill--published">Published</span></td><td>It's live on the real website.</td></tr>
+        <tr><td><span class="pill" style="background:#F3F4F6;color:#9CA3AF">Discarded</span></td><td>Thrown away. The live site was never affected.</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Good to know</h2>
+      <ul>
+        <li><b>You can't break the website.</b> Nothing goes live until someone clicks Publish, and every published change can be undone.</li>
+        <li><b>Ask for changes as many times as you like.</b> Each round updates the same preview — keep going until it's right.</li>
+        <li><b>Photos:</b> jpg or png, up to 4 MB each. Phone photos work fine.</li>
+        <li><b>Stuck on "Working on it" for more than 10 minutes?</b> Something hiccuped — just send the request again, or tell Michael.</li>
+        <li><b>Big changes</b> (new pages, redesigns, anything structural) — talk to Michael first.</li>
+      </ul>
+    </div>
+
+  </main>
+</body>
+</html>
