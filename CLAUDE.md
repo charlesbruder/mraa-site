@@ -55,6 +55,20 @@ Your job is to make the requested edit safely, matching the existing design exac
     link is given, point the RSVP button at it with `target="_blank"`; otherwise follow
     the existing card pattern.
 
+## Brand assets & Mizzou licensing rules
+
+- The official club crest lives at `assets/brand/miz-rugby-crest-1600.png` (large) and
+  `assets/brand/miz-rugby-crest-400.png` (small); vector source `miz-rugby-crest.pdf`.
+  The crest has a WHITE background — use it only on white/light sections, never on the
+  black nav/footer without explicit instruction.
+- **Mizzou licensing (do not violate):** the club may use the "spirit" tiger head mark
+  per https://brand.missouri.edu/brand-visuals/signatures-marks/tiger-marks/ but may
+  **NEVER use the athletic tiger head with the oval**. Official club-sports logos:
+  https://brand.missouri.edu/apply-the-brand/apparel-merchandise-promo-items/club-sports/
+- If a change request asks to add any Mizzou tiger-head logo, use only files already in
+  `assets/brand/` — never fetch or recreate marks. If the needed mark isn't there,
+  note it in the PR description instead of improvising.
+
 ## Workflow requirements
 
 - Work on the branch the action created for you.
