@@ -58,8 +58,14 @@
     const err = $('login-error')
     err.classList.add('hidden')
     try {
-      const { token: t } = await apiLogin($('password').value)
-      localStorage.setItem(TOKEN_KEY, t)
+      const res = await fetch(`${API}/auth`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: $('password').value }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error || 'Could not sign in')
+      localStorage.setItem(TOKEN_KEY, data.token)
       $('password').value = ''
       enterApp()
     } catch (ex) {
@@ -68,52 +74,131 @@
     }
   })
 
-  async function apiLogin(password) {
-    const res = await fetch(`${API}/auth`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password }),
-    })
-    const data = await res.json().catch(() => ({}))
-    if (!res.ok) throw new Error(data.error || 'Could not sign in')
-    return data
-  }
-
   logoutBtn.addEventListener('click', signOut)
 
-  // ---------- submit a request ----------
+  // ---------- tabs ----------
 
-  $('request-form').addEventListener('submit', async (e) => {
-    e.preventDefault()
-    const btn = $('submit-btn')
-    const status = $('submit-status')
-    const err = $('request-error')
-    err.classList.add('hidden')
-    btn.disabled = true
-    try {
-      const files = Array.from($('photos').files || [])
-      const photos = []
-      for (let i = 0; i < files.length; i++) {
-        status.textContent = `Uploading photo ${i + 1} of ${files.length}…`
-        photos.push((await api('upload-photo', {
-          name: files[i].name,
-          dataBase64: await fileToBase64(files[i]),
-        })).path)
+  $('tabs').addEventListener('click', (e) => {
+    const btn = e.target.closest('.tab')
+    if (!btn) return
+    document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('active', t === btn))
+    document.querySelectorAll('.tabpane').forEach((p) =>
+      p.classList.toggle('hidden', p.dataset.pane !== btn.dataset.tab)
+    )
+  })
+
+  // ---------- request forms ----------
+
+  function prettyDate(value) {
+    if (!value) return ''
+    const [y, m, d] = value.split('-').map(Number)
+    return new Date(y, m - 1, d).toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric',
+    })
+  }
+
+  function prettyRange(start, end) {
+    const s = prettyDate(start)
+    if (!end || end === start) return s
+    const e = prettyDate(end)
+    const [sm, sd, sy] = [s.split(' ')[0], s.split(' ')[1].replace(',', ''), s.split(' ')[2]]
+    const [em, ed, ey] = [e.split(' ')[0], e.split(' ')[1].replace(',', ''), e.split(' ')[2]]
+    if (sm === em && sy === ey) return `${sm} ${sd}–${ed}, ${sy}` // October 3–4, 2026
+    return `${s} – ${e}`
+  }
+
+  const today = new Date()
+  $('news-date').value = [
+    today.getFullYear(),
+    String(today.getMonth() + 1).padStart(2, '0'),
+    String(today.getDate()).padStart(2, '0'),
+  ].join('-')
+
+  const VERBATIM =
+    'The author wrote this text themselves — use it EXACTLY as written. Do not rewrite, shorten, expand, or correct it; only wrap it in the site\'s existing HTML structure (paragraphs where the author left blank lines).'
+
+  function buildNewsPrompt(photos) {
+    const title = $('news-title').value.trim()
+    const lines = [
+      `Add this news post: ${title}`,
+      '',
+      `Date: ${prettyDate($('news-date').value) || 'today'}`,
+      `Category tag: ${$('news-tag').value}`,
+      '',
+      `Post text — ${VERBATIM}`,
+      '"""',
+      $('news-body').value.trim(),
+      '"""',
+      '',
+      'Add a card to the top of the news.html grid (use the first sentence of the post as the card excerpt) and create the full article page following the site conventions.',
+    ]
+    if (photos.length) lines.push('', `Use ${photos.map((p) => `\`${p}\``).join(' and ')} as the article and card image.`)
+    return lines.join('\n')
+  }
+
+  function buildEventPrompt(photos) {
+    const name = $('event-name').value.trim()
+    const lines = [
+      `Add this event to the calendar: ${name}`,
+      '',
+      `Date: ${prettyRange($('event-date').value, $('event-end').value)}`,
+    ]
+    if ($('event-time').value.trim()) lines.push(`Time: ${$('event-time').value.trim()}`)
+    lines.push(`Location: ${$('event-location').value.trim()}`)
+    lines.push('', `Description — ${VERBATIM}`, '"""', $('event-desc').value.trim(), '"""')
+    lines.push('', 'Add it as an event card in the Upcoming Events section of events.html, keeping events in date order.')
+    if ($('event-link').value.trim())
+      lines.push(`Point the RSVP button at ${$('event-link').value.trim()} (open in a new tab).`)
+    if (photos.length) lines.push('', `Use ${photos.map((p) => `\`${p}\``).join(' and ')} as the event image.`)
+    return lines.join('\n')
+  }
+
+  function buildOtherPrompt(photos) {
+    let text = $('other-prompt').value.trim()
+    if (photos.length) text += `\n\nUse the uploaded photo(s): ${photos.map((p) => `\`${p}\``).join(', ')}`
+    return text
+  }
+
+  const FORMS = [
+    { id: 'news-form', files: 'news-photos', build: buildNewsPrompt },
+    { id: 'event-form', files: 'event-photos', build: buildEventPrompt },
+    { id: 'other-form', files: 'other-photos', build: buildOtherPrompt },
+  ]
+
+  FORMS.forEach(({ id, files, build }) => {
+    const form = $(id)
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const btn = form.querySelector('button[type="submit"]')
+      const status = form.querySelector('.submit-status')
+      const err = form.querySelector('.submit-error')
+      err.classList.add('hidden')
+      btn.disabled = true
+      try {
+        const fileList = Array.from($(files).files || [])
+        const photos = []
+        for (let i = 0; i < fileList.length; i++) {
+          status.textContent = `Uploading photo ${i + 1} of ${fileList.length}…`
+          photos.push((await api('upload-photo', {
+            name: fileList[i].name,
+            dataBase64: await fileToBase64(fileList[i]),
+          })).path)
+        }
+        status.textContent = 'Sending request…'
+        await api('create-request', { prompt: build(photos) })
+        form.reset()
+        if (id === 'news-form') $('news-date').value = new Date().toISOString().slice(0, 10)
+        status.textContent = 'Request sent! It will appear below.'
+        setTimeout(() => (status.textContent = ''), 6000)
+        refresh()
+      } catch (ex) {
+        err.textContent = ex.message
+        err.classList.remove('hidden')
+        status.textContent = ''
+      } finally {
+        btn.disabled = false
       }
-      status.textContent = 'Sending request…'
-      await api('create-request', { prompt: $('prompt').value, photos })
-      $('prompt').value = ''
-      $('photos').value = ''
-      status.textContent = 'Request sent! It will appear below.'
-      setTimeout(() => (status.textContent = ''), 6000)
-      refresh()
-    } catch (ex) {
-      err.textContent = ex.message
-      err.classList.remove('hidden')
-      status.textContent = ''
-    } finally {
-      btn.disabled = false
-    }
+    })
   })
 
   function fileToBase64(file) {

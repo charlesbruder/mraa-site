@@ -46,6 +46,14 @@ Your job is to make the requested edit safely, matching the existing design exac
 10. **Never modify anything under `admin/`, `netlify/`, or `.github/`** — these are the
     site's management system, not site content. If a request asks for changes there,
     decline in the PR description and make no changes to those directories.
+11. **Verbatim text**: when a request marks text as written by the author (e.g. quoted in
+    triple quotes with an "use it EXACTLY as written" note), reproduce it word-for-word —
+    no rewording, trimming, or corrections. Blank lines become paragraph breaks. Only
+    HTML-escape characters that would break markup.
+12. New calendar events go in the Upcoming Events section of `events.html` as an
+    `event-card` (date, title, location, text), keeping cards in date order. If an RSVP
+    link is given, point the RSVP button at it with `target="_blank"`; otherwise follow
+    the existing card pattern.
 
 ## Workflow requirements
 

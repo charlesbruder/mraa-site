@@ -34,8 +34,15 @@
     h1 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.35rem; }
     h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; }
     p.help { color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1rem; }
-    textarea, input[type="password"] { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 2px; font: inherit; font-size: 0.95rem; }
+    textarea, input[type="password"], input[type="text"], input[type="date"], input[type="url"], select { width: 100%; padding: 0.7rem 0.75rem; border: 1px solid var(--border); border-radius: 2px; font: inherit; font-size: 0.95rem; background: #fff; }
     textarea { min-height: 110px; resize: vertical; }
+    .tabs { display: flex; gap: 0.4rem; margin-bottom: 1.1rem; flex-wrap: wrap; }
+    .tab { padding: 0.45rem 1.1rem; border: 1px solid var(--border); background: #fff; border-radius: 999px; cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+    .tab.active { background: var(--black); color: var(--gold); border-color: var(--black); }
+    .field { display: block; margin-bottom: 0.9rem; font-size: 0.85rem; font-weight: 600; }
+    .field input, .field select, .field textarea { margin-top: 0.3rem; font-weight: 400; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+    @media (max-width: 560px) { .grid2 { grid-template-columns: 1fr; } }
     .btn { display: inline-block; background: var(--gold); color: var(--black); border: none; padding: 0.65rem 1.4rem; font-weight: 600; font-size: 0.9rem; border-radius: 2px; cursor: pointer; }
     .btn:hover { background: var(--gold-hover); }
     .btn:disabled { opacity: 0.5; cursor: default; }
@@ -86,19 +93,99 @@
     <section id="app-view" class="hidden">
       <div class="card">
         <h2>Request a change</h2>
-        <p class="help">Describe what you'd like changed or added in plain English — like you're telling a helpful volunteer. Example: "Add a news post: the fall alumni weekend is October 10–12 in Columbia. Include the attached photo."</p>
-        <form id="request-form">
-          <textarea id="prompt" placeholder="What would you like to change on the website?" required></textarea>
+        <div class="tabs" id="tabs">
+          <button type="button" class="tab active" data-tab="news">News post</button>
+          <button type="button" class="tab" data-tab="event">Calendar event</button>
+          <button type="button" class="tab" data-tab="other">Something else</button>
+        </div>
+
+        <!-- NEWS POST -->
+        <form id="news-form" class="tabpane" data-pane="news">
+          <p class="help">Fill this in and your post goes on the News page word-for-word — exactly as you write it.</p>
+          <label class="field">Headline *
+            <input type="text" id="news-title" required maxlength="90" placeholder="e.g. Tigers Win Season Opener">
+          </label>
+          <div class="grid2">
+            <label class="field">Date
+              <input type="date" id="news-date">
+            </label>
+            <label class="field">Category
+              <select id="news-tag">
+                <option>Club News</option>
+                <option>Match Report</option>
+                <option>Alumni Spotlight</option>
+                <option>Announcements</option>
+              </select>
+            </label>
+          </div>
+          <label class="field">Your post *
+            <textarea id="news-body" required placeholder="Write your post here. It will appear on the website exactly as written."></textarea>
+          </label>
           <div class="filerow">
-            <label>Attach photos (optional): <input type="file" id="photos" accept="image/jpeg,image/png,image/gif,image/webp" multiple></label>
+            <label>Photo (optional): <input type="file" id="news-photos" accept="image/jpeg,image/png,image/gif,image/webp" multiple></label>
           </div>
           <div class="row">
-            <button class="btn" type="submit" id="submit-btn">Send request</button>
-            <span id="submit-status" class="meta"></span>
+            <button class="btn" type="submit">Send news post</button>
+            <span class="meta submit-status"></span>
           </div>
-          <div id="request-error" class="error hidden"></div>
-          <div class="notice">After you send a request, the site assistant works on it for a few minutes. When the status says <strong>Ready to preview</strong>, click <strong>View preview</strong> to see the change before anything goes live.</div>
+          <div class="error submit-error hidden"></div>
         </form>
+
+        <!-- CALENDAR EVENT -->
+        <form id="event-form" class="tabpane hidden" data-pane="event">
+          <p class="help">Adds your event to the Upcoming Events calendar on the Events page.</p>
+          <label class="field">Event name *
+            <input type="text" id="event-name" required maxlength="90" placeholder="e.g. Alumni Golf Outing">
+          </label>
+          <div class="grid2">
+            <label class="field">Date *
+              <input type="date" id="event-date" required>
+            </label>
+            <label class="field">End date (multi-day events)
+              <input type="date" id="event-end">
+            </label>
+          </div>
+          <div class="grid2">
+            <label class="field">Time (optional)
+              <input type="text" id="event-time" placeholder="e.g. 1:00 PM kickoff">
+            </label>
+            <label class="field">Location *
+              <input type="text" id="event-location" required placeholder="e.g. Stankowski Field, Columbia, MO">
+            </label>
+          </div>
+          <label class="field">Description *
+            <textarea id="event-desc" required placeholder="Describe the event. This appears on the website exactly as written."></textarea>
+          </label>
+          <label class="field">RSVP or info link (optional)
+            <input type="url" id="event-link" placeholder="https://…">
+          </label>
+          <div class="filerow">
+            <label>Photo (optional): <input type="file" id="event-photos" accept="image/jpeg,image/png,image/gif,image/webp" multiple></label>
+          </div>
+          <div class="row">
+            <button class="btn" type="submit">Send event</button>
+            <span class="meta submit-status"></span>
+          </div>
+          <div class="error submit-error hidden"></div>
+        </form>
+
+        <!-- ANYTHING ELSE -->
+        <form id="other-form" class="tabpane hidden" data-pane="other">
+          <p class="help">For anything that isn't a news post or event — describe the change in plain English, like you're telling a helpful volunteer.</p>
+          <label class="field">What would you like changed? *
+            <textarea id="other-prompt" required placeholder="e.g. Update the president's name on the About page to Jane Doe"></textarea>
+          </label>
+          <div class="filerow">
+            <label>Photos (optional): <input type="file" id="other-photos" accept="image/jpeg,image/png,image/gif,image/webp" multiple></label>
+          </div>
+          <div class="row">
+            <button class="btn" type="submit">Send request</button>
+            <span class="meta submit-status"></span>
+          </div>
+          <div class="error submit-error hidden"></div>
+        </form>
+
+        <div class="notice">After you send a request, the site assistant works on it for a few minutes. When the status says <strong>Ready to preview</strong>, click <strong>View preview</strong> to see the change before anything goes live.</div>
       </div>
 
       <div class="card">
