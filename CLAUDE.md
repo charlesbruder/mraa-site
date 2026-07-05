@@ -43,6 +43,9 @@ Your job is to make the requested edit safely, matching the existing design exac
    assumption in the PR description — do not ask questions and stall.
 9. If a request would require deleting large amounts of content or restructuring the site,
    make the safest minimal version of it and flag your concern in the PR description.
+10. **Never modify anything under `admin/`, `netlify/`, or `.github/`** — these are the
+    site's management system, not site content. If a request asks for changes there,
+    decline in the PR description and make no changes to those directories.
 
 ## Workflow requirements
 

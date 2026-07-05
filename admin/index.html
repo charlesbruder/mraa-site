@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Site Manager — Mizzou Rugby Alumni Association</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #FDB719;
+      --gold-hover: #E5A510;
+      --black: #000000;
+      --bg: #F5F5F5;
+      --text: #1A1A1A;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --green: #15803D;
+      --green-bg: #DCFCE7;
+      --gold-bg: rgba(253, 183, 25, 0.15);
+      --red: #B91C1C;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: var(--black); color: #fff; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    header .brand { display: flex; flex-direction: column; }
+    header .brand strong { color: var(--gold); font-weight: 900; letter-spacing: 0.05em; font-size: 1.1rem; }
+    header .brand span { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: #ccc; }
+    header button { background: none; border: 1px solid #444; color: #ccc; padding: 0.35rem 0.8rem; border-radius: 2px; cursor: pointer; font-size: 0.75rem; }
+    main { max-width: 760px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    .hidden { display: none !important; }
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; margin-bottom: 1.5rem; }
+    h1 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.35rem; }
+    h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; }
+    p.help { color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1rem; }
+    textarea, input[type="password"] { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 2px; font: inherit; font-size: 0.95rem; }
+    textarea { min-height: 110px; resize: vertical; }
+    .btn { display: inline-block; background: var(--gold); color: var(--black); border: none; padding: 0.65rem 1.4rem; font-weight: 600; font-size: 0.9rem; border-radius: 2px; cursor: pointer; }
+    .btn:hover { background: var(--gold-hover); }
+    .btn:disabled { opacity: 0.5; cursor: default; }
+    .btn--ghost { background: none; border: 1px solid var(--border); color: var(--text); }
+    .btn--ghost:hover { background: var(--bg); }
+    .btn--danger { background: none; border: 1px solid var(--border); color: var(--red); }
+    .btn--sm { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
+    .row { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; margin-top: 0.9rem; }
+    .error { color: var(--red); font-size: 0.85rem; margin-top: 0.6rem; }
+    .notice { background: var(--gold-bg); border: 1px solid var(--gold); border-radius: 2px; padding: 0.7rem 0.9rem; font-size: 0.85rem; margin-top: 0.9rem; }
+    .req { border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.15rem; margin-bottom: 0.9rem; background: #fff; }
+    .req h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; overflow-wrap: anywhere; }
+    .req .meta { font-size: 0.75rem; color: var(--muted); }
+    .chip { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 999px; margin-bottom: 0.5rem; }
+    .chip--working { background: #E5E7EB; color: #374151; }
+    .chip--ready { background: var(--gold-bg); color: #92600A; border: 1px solid var(--gold); }
+    .chip--published { background: var(--green-bg); color: var(--green); }
+    .chip--discarded { background: #F3F4F6; color: #9CA3AF; }
+    .feedback-box { margin-top: 0.9rem; }
+    .spin { display: inline-block; width: 0.85em; height: 0.85em; border: 2px solid #9CA3AF; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: -0.1em; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .filerow { margin-top: 0.75rem; font-size: 0.85rem; color: var(--muted); }
+    footer { text-align: center; font-size: 0.75rem; color: var(--muted); padding-bottom: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><strong>MRAA</strong><span>Site Manager</span></div>
+    <button id="logout" class="hidden">Sign out</button>
+  </header>
+  <main>
+
+    <!-- LOGIN -->
+    <section id="login-view" class="card">
+      <h1>Site Manager</h1>
+      <p class="help">Update the Mizzou Rugby Alumni Association website — no technical skills needed. Enter the board password to get started.</p>
+      <form id="login-form">
+        <input type="password" id="password" placeholder="Board password" autocomplete="current-password" required>
+        <div class="row"><button class="btn" type="submit">Sign in</button></div>
+        <div id="login-error" class="error hidden"></div>
+      </form>
+    </section>
+
+    <!-- APP -->
+    <section id="app-view" class="hidden">
+      <div class="card">
+        <h2>Request a change</h2>
+        <p class="help">Describe what you'd like changed or added in plain English — like you're telling a helpful volunteer. Example: "Add a news post: the fall alumni weekend is October 10–12 in Columbia. Include the attached photo."</p>
+        <form id="request-form">
+          <textarea id="prompt" placeholder="What would you like to change on the website?" required></textarea>
+          <div class="filerow">
+            <label>Attach photos (optional): <input type="file" id="photos" accept="image/jpeg,image/png,image/gif,image/webp" multiple></label>
+          </div>
+          <div class="row">
+            <button class="btn" type="submit" id="submit-btn">Send request</button>
+            <span id="submit-status" class="meta"></span>
+          </div>
+          <div id="request-error" class="error hidden"></div>
+          <div class="notice">After you send a request, the site assistant works on it for a few minutes. When the status says <strong>Ready to preview</strong>, click <strong>View preview</strong> to see the change before anything goes live.</div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Change requests <button id="refresh" class="btn btn--ghost btn--sm" style="float:right">Refresh</button></h2>
+        <div id="list"><p class="help">Loading…</p></div>
+      </div>
+    </section>
+
+  </main>
+  <footer>Mizzou Rugby Alumni Association · questions? contact Michael</footer>
+  <script src="admin.js"></script>
+</body>
+</html>
