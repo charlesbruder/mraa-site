@@ -360,7 +360,8 @@ h4 { font-size: 1.25rem; }
 
 /* --- Icon Cards --- */
 .icon-card { text-align: center; padding: var(--space-xl) var(--space-md); }
-.icon-card__icon { font-size: 2.5rem; margin-bottom: var(--space-sm); display: block; }
+.icon-card__icon { font-size: 2.5rem; margin-bottom: var(--space-sm); display: block; color: var(--color-gold); }
+.icon-card__icon svg { margin: 0 auto; }
 .icon-card__title { font-size: 1rem; font-weight: var(--font-weight-bold); margin-bottom: var(--space-xs); }
 .icon-card__text { font-size: 0.875rem; color: var(--color-text-muted); }
 
@@ -998,4 +999,24 @@ h4 { font-size: 1.25rem; }
     linear-gradient(rgba(244, 242, 238, 0.93), rgba(244, 242, 238, 0.93)),
     url('../assets/brand/miz-rugby-crest-400.png') center / auto 62% no-repeat,
     #F4F2EE;
+}
+
+/* --- Membership tier benefits --- */
+.tier-card__benefits {
+  list-style: none;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.tier-card__benefits li { padding-left: 1.4rem; position: relative; }
+.tier-card__benefits li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: var(--color-gold);
+  font-weight: var(--font-weight-bold);
 }
