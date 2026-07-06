@@ -54,109 +54,38 @@
     <div class="hero__bg">PLACEHOLDER IMAGE — SHOP HEADER</div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title">Official Mizzou Rugby Gear</h1>
+      <h1 class="hero__title">Shop</h1>
       <p class="hero__subtitle">Rep the Tigers. Support the program.</p>
     </div>
   </section>
 
   <!-- PRODUCT GRID -->
+  <!-- COMING SOON -->
   <section class="section">
+    <div class="container container--narrow text-center">
+      <img src="assets/brand/miz-rugby-crest-400.png" alt="" style="height:130px; width:auto; margin:0 auto var(--space-lg);">
+      <h2 style="margin-bottom:var(--space-sm);">The Shop Is Coming Soon</h2>
+      <p class="text-muted" style="font-size:1.0625rem; max-width:560px; margin:0 auto var(--space-xl);">Official Mizzou Rugby alumni gear — hats, hoodies, tees, and more — is on the way. Join the newsletter below and you'll be the first to know when it drops.</p>
+      <div class="btn-group" style="justify-content:center;">
+        <a href="alumni.html" class="btn btn--primary">Join the Alumni Network</a>
+        <a href="donate.html" class="btn btn--outline-dark">Support the Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL BAR -->
+  <section class="email-bar">
     <div class="container">
-      <div class="section-header">
-        <h2>Shop</h2>
-        <div class="section-header__bar"></div>
-      </div>
-      <!-- TODO: Connect to GHL/Shopify/WooCommerce -->
-      <div class="grid grid--auto-4">
-        <div class="product-card">
-          <div class="product-card__image placeholder-img">PLACEHOLDER</div>
-          <div class="product-card__body">
-            <h3 class="product-card__name">Trucker Hat</h3>
-            <p class="product-card__price">$40</p>
-            <button class="btn btn--primary btn--sm">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-card__image placeholder-img">PLACEHOLDER</div>
-          <div class="product-card__body">
-            <h3 class="product-card__name">Flatbill Hat</h3>
-            <p class="product-card__price">$40</p>
-            <button class="btn btn--primary btn--sm">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-card__image placeholder-img">PLACEHOLDER</div>
-          <div class="product-card__body">
-            <h3 class="product-card__name">Hoodie</h3>
-            <p class="product-card__price">$50</p>
-            <button class="btn btn--primary btn--sm">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-card__image placeholder-img">PLACEHOLDER</div>
-          <div class="product-card__body">
-            <h3 class="product-card__name">Hoodie with Embroidery</h3>
-            <p class="product-card__price">$55</p>
-            <button class="btn btn--primary btn--sm">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-card__image placeholder-img">PLACEHOLDER</div>
-          <div class="product-card__body">
-            <h3 class="product-card__name">T-Shirt</h3>
-            <p class="product-card__price">$30</p>
-            <button class="btn btn--primary btn--sm">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-card__image placeholder-img">PLACEHOLDER</div>
-          <div class="product-card__body">
-            <h3 class="product-card__name">Polo</h3>
-            <p class="product-card__price">$65</p>
-            <button class="btn btn--primary btn--sm">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-card__image placeholder-img">PLACEHOLDER</div>
-          <div class="product-card__body">
-            <h3 class="product-card__name">40 oz Travel Mug</h3>
-            <p class="product-card__price">$40</p>
-            <button class="btn btn--primary btn--sm">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-card__image placeholder-img">PLACEHOLDER</div>
-          <div class="product-card__body">
-            <h3 class="product-card__name">20 oz Tumbler</h3>
-            <p class="product-card__price">$25</p>
-            <button class="btn btn--primary btn--sm">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-card__image placeholder-img">PLACEHOLDER</div>
-          <div class="product-card__body">
-            <h3 class="product-card__name">Sticker</h3>
-            <p class="product-card__price">$3</p>
-            <button class="btn btn--primary btn--sm">Add to Cart</button>
-          </div>
-        </div>
+      <div class="email-bar__inner">
+        <p class="email-bar__text">Get notified when the shop opens</p>
+        <form class="email-bar__form" name="newsletter" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="newsletter"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true">
+          <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required>
+          <button type="submit" class="btn btn--primary btn--sm">Notify Me</button>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- CART PLACEHOLDER -->
-  <section class="section section--light">
-    <div class="container text-center">
-      <div class="section-header">
-        <h2>Your Cart</h2>
-        <div class="section-header__bar"></div>
-      </div>
-      <p class="text-muted" style="margin-bottom:var(--space-lg);">Your cart is empty</p>
-      <button class="btn btn--outline-dark" disabled style="opacity:0.5;cursor:not-allowed;">Continue to Checkout</button>
-    </div>
-  </section>
-
-  <!-- CTA BANNER -->
   <section class="cta-banner">
     <div class="container">
       <div class="cta-banner__inner">
