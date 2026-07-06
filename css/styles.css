@@ -743,7 +743,8 @@ h4 { font-size: 1.25rem; }
   transition: all var(--transition-base);
 }
 .involve-card:hover { border-color: var(--color-gold); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
-.involve-card__icon { font-size: 2.5rem; margin-bottom: var(--space-sm); }
+.involve-card__icon { font-size: 2.5rem; margin-bottom: var(--space-sm); color: var(--color-gold); }
+.involve-card__icon svg { margin: 0 auto; }
 .involve-card h3 { margin-bottom: var(--space-sm); }
 .involve-card p { color: var(--color-text-muted); margin-bottom: var(--space-lg); font-size: 0.9375rem; }
 
