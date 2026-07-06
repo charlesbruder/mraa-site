@@ -102,16 +102,16 @@
         <div class="section-header__bar"></div>
       </div>
       <!-- GHL FORM: Alumni Registration → Pipeline: Alumni Onboarding -->
-      <form class="form form--wide" onsubmit="return false;">
+      <form class="form form--wide" name="alumni-registration" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="alumni-registration"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true">
         <div class="form-row">
-          <div class="form-group"><label class="form-label" for="a-first">First Name</label><input class="form-input" type="text" id="a-first"></div>
-          <div class="form-group"><label class="form-label" for="a-last">Last Name</label><input class="form-input" type="text" id="a-last"></div>
+          <div class="form-group"><label class="form-label" for="a-first">First Name</label><input class="form-input" type="text" id="a-first" name="a-first"></div>
+          <div class="form-group"><label class="form-label" for="a-last">Last Name</label><input class="form-input" type="text" id="a-last" name="a-last"></div>
         </div>
-        <div class="form-group"><label class="form-label" for="a-email">Email</label><input class="form-input" type="email" id="a-email"></div>
-        <div class="form-group"><label class="form-label" for="a-phone">Phone</label><input class="form-input" type="tel" id="a-phone"></div>
+        <div class="form-group"><label class="form-label" for="a-email">Email</label><input class="form-input" type="email" id="a-email" name="a-email"></div>
+        <div class="form-group"><label class="form-label" for="a-phone">Phone</label><input class="form-input" type="tel" id="a-phone" name="a-phone"></div>
         <div class="form-group">
           <label class="form-label" for="a-gradyear">MU Graduation Year</label>
-          <select class="form-select" id="a-gradyear">
+          <select class="form-select" id="a-gradyear" name="a-gradyear">
             <option value="">Select year</option>
             <option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option>
             <option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option>
@@ -130,17 +130,17 @@
           </select>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label" for="a-start">Years Played — Start</label><input class="form-input" type="number" id="a-start" min="1960" max="2030"></div>
-          <div class="form-group"><label class="form-label" for="a-end">Years Played — End</label><input class="form-input" type="number" id="a-end" min="1960" max="2030"></div>
+          <div class="form-group"><label class="form-label" for="a-start">Years Played — Start</label><input class="form-input" type="number" id="a-start" name="a-start" min="1960" max="2030"></div>
+          <div class="form-group"><label class="form-label" for="a-end">Years Played — End</label><input class="form-input" type="number" id="a-end" name="a-end" min="1960" max="2030"></div>
         </div>
-        <div class="form-group"><label class="form-label" for="a-position">Position(s) Played</label><input class="form-input" type="text" id="a-position" placeholder="e.g., Flanker, Fly-half"></div>
+        <div class="form-group"><label class="form-label" for="a-position">Position(s) Played</label><input class="form-input" type="text" id="a-position" name="a-position" placeholder="e.g., Flanker, Fly-half"></div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label" for="a-city">Current City</label><input class="form-input" type="text" id="a-city"></div>
-          <div class="form-group"><label class="form-label" for="a-state">Current State</label><input class="form-input" type="text" id="a-state"></div>
+          <div class="form-group"><label class="form-label" for="a-city">Current City</label><input class="form-input" type="text" id="a-city" name="a-city"></div>
+          <div class="form-group"><label class="form-label" for="a-state">Current State</label><input class="form-input" type="text" id="a-state" name="a-state"></div>
         </div>
         <div class="form-group">
           <label class="form-label" for="a-hear">How did you hear about us?</label>
-          <select class="form-select" id="a-hear">
+          <select class="form-select" id="a-hear" name="a-hear">
             <option value="">Select an option</option>
             <option>Word of Mouth</option>
             <option>Social Media</option>
@@ -149,9 +149,9 @@
             <option>Other</option>
           </select>
         </div>
-        <div class="form-group"><label class="form-label" for="a-msg">Message</label><textarea class="form-textarea" id="a-msg"></textarea></div>
+        <div class="form-group"><label class="form-label" for="a-msg">Message</label><textarea class="form-textarea" id="a-msg" name="a-msg"></textarea></div>
         <div class="form-checkbox">
-          <input type="checkbox" id="a-consent">
+          <input type="checkbox" id="a-consent" name="a-consent">
           <label for="a-consent">I consent to being contacted by the Mizzou Rugby Alumni Association regarding events, news, and opportunities to support the program.</label>
         </div>
         <button type="submit" class="btn btn--primary btn--lg">Join the Network</button>
@@ -240,8 +240,8 @@
     <div class="container">
       <div class="email-bar__inner">
         <p class="email-bar__text">Stay up to date with Mizzou Rugby</p>
-        <form class="email-bar__form" onsubmit="return false;">
-          <input type="email" placeholder="Enter your email" aria-label="Email address">
+        <form class="email-bar__form" name="newsletter" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="newsletter"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true">
+          <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required>
           <button type="submit" class="btn btn--primary btn--sm">Subscribe</button>
         </form>
       </div>
@@ -272,10 +272,10 @@
           <div class="nav__logo-text" style="color:var(--color-gold);">Mizzou Rugby <span style="color:rgba(255,255,255,0.6);">Alumni Association</span></div>
           <p>Connecting generations of Mizzou Rugby. Supporting the present. Building the future.</p>
           <div class="social-links">
-            <a href="#" class="social-link" aria-label="Facebook">FB</a>
-            <a href="#" class="social-link" aria-label="Instagram">IG</a>
-            <a href="#" class="social-link" aria-label="Twitter/X">X</a>
-            <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+            <a href="#" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37a4 4 0 1 1-7.914 1.173A4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" class="social-link" aria-label="Twitter/X"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.34"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
           </div>
         </div>
         <div class="footer__col">
@@ -304,8 +304,8 @@
         <div class="footer__col footer__newsletter">
           <h4>Newsletter</h4>
           <p>Get the latest news and updates delivered to your inbox.</p>
-          <form class="footer__newsletter-form" onsubmit="return false;">
-            <input type="email" placeholder="Your email" aria-label="Email for newsletter">
+          <form class="footer__newsletter-form" name="newsletter" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="newsletter"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true">
+            <input type="email" name="email" placeholder="Your email" aria-label="Email for newsletter" required>
             <button type="submit" class="btn btn--primary btn--sm">Go</button>
           </form>
         </div>

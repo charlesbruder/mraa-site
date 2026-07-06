@@ -989,3 +989,13 @@ h4 { font-size: 1.25rem; }
   .tier-grid { grid-template-columns: 1fr; }
   .quick-actions__grid { grid-template-columns: 1fr; }
 }
+
+/* --- Branded placeholders: faint crest watermark until real photos arrive --- */
+.placeholder-img, .card__image, .event-card__image, .person-card__photo,
+.product-card__image, .achievement-card__image {
+  color: transparent;
+  background:
+    linear-gradient(rgba(244, 242, 238, 0.93), rgba(244, 242, 238, 0.93)),
+    url('../assets/brand/miz-rugby-crest-400.png') center / auto 62% no-repeat,
+    #F4F2EE;
+}

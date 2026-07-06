@@ -65,9 +65,9 @@
     <div class="container">
       <div class="section-header"><h2>Share Your 1997 Season</h2><p>Roster info, season records, photos, stories — every detail helps.</p><div class="section-header__bar"></div></div>
       <!-- GHL FORM: History Submission → Pipeline: Alumni Content -->
-      <form class="form" style="margin:0 auto;" onsubmit="return false;">
+      <form class="form" style="margin:0 auto;" name="history-submission" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="history-submission"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true">
         <div class="form-group"><label class="form-label" for="h-type">What are you submitting?</label>
-          <select class="form-select" id="h-type">
+          <select class="form-select" id="h-type" name="h-type">
             <option>Roster Information</option>
             <option>Season Record / Results</option>
             <option>Photos</option>
@@ -77,14 +77,14 @@
           </select>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label" for="h-name">Your Name</label><input class="form-input" id="h-name"></div>
-          <div class="form-group"><label class="form-label" for="h-email">Email</label><input class="form-input" id="h-email" type="email"></div>
+          <div class="form-group"><label class="form-label" for="h-name">Your Name</label><input class="form-input" id="h-name" name="h-name"></div>
+          <div class="form-group"><label class="form-label" for="h-email">Email</label><input class="form-input" id="h-email" name="h-email" type="email"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label" for="h-class">Class Year</label><input class="form-input" id="h-class"></div>
-          <div class="form-group"><label class="form-label" for="h-played">Years Played</label><input class="form-input" id="h-played"></div>
+          <div class="form-group"><label class="form-label" for="h-class">Class Year</label><input class="form-input" id="h-class" name="h-class"></div>
+          <div class="form-group"><label class="form-label" for="h-played">Years Played</label><input class="form-input" id="h-played" name="h-played"></div>
         </div>
-        <div class="form-group"><label class="form-label" for="h-info">Information to Share</label><textarea class="form-textarea" id="h-info" rows="6" placeholder="Roster names, record, notable games, memories..."></textarea></div>
+        <div class="form-group"><label class="form-label" for="h-info">Information to Share</label><textarea class="form-textarea" id="h-info" name="h-info" rows="6" placeholder="Roster names, record, notable games, memories..."></textarea></div>
         <div class="form-group"><label class="form-label">Photo Upload</label><div class="form-file">📎 Click or drag files here to upload</div></div>
         <button type="submit" class="btn btn--primary">Submit Information</button>
       </form>
@@ -105,12 +105,12 @@
         <div class="footer__brand">
           <div class="nav__logo-text" style="color:var(--color-gold);">Mizzou Rugby <span style="color:rgba(255,255,255,0.6);">Alumni Association</span></div>
           <p>Connecting generations of Mizzou Rugby. Supporting the present. Building the future.</p>
-          <div class="social-links"><a href="#" class="social-link">FB</a><a href="#" class="social-link">IG</a><a href="#" class="social-link">X</a><a href="#" class="social-link">LI</a></div>
+          <div class="social-links"><a href="#" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="#" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37a4 4 0 1 1-7.914 1.173A4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="#" class="social-link" aria-label="Twitter/X"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20"/></svg></a><a href="#" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.34"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div>
         </div>
         <div class="footer__col"><h4>Quick Links</h4><a href="../index.html">Home</a><a href="../about.html">About</a><a href="../alumni.html">Alumni</a><a href="../news.html">News</a><a href="../history.html">History</a></div>
         <div class="footer__col"><h4>Get Involved</h4><a href="../donate.html">Donate</a><a href="../events.html">Events</a><a href="../sponsors.html">Sponsors</a><a href="../contact.html">Volunteer</a><a href="../shop.html">Shop</a></div>
         <div class="footer__col"><h4>Resources</h4><a href="../team.html">Current Team</a><a href="../events.html">Schedule</a><a href="../privacy-policy.html">Privacy Policy</a><a href="../contact.html">Contact Us</a></div>
-        <div class="footer__col footer__newsletter"><h4>Newsletter</h4><p>Get updates delivered to your inbox.</p><form class="footer__newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email"><button class="btn btn--primary btn--sm">Go</button></form></div>
+        <div class="footer__col footer__newsletter"><h4>Newsletter</h4><p>Get updates delivered to your inbox.</p><form class="footer__newsletter-form" name="newsletter" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="newsletter"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true"><input type="email" name="email" placeholder="Your email" aria-label="Email for newsletter" required><button class="btn btn--primary btn--sm">Go</button></form></div>
       </div>
       <div class="footer__bottom"><span>&copy; 2026 Mizzou Rugby Alumni Association. All rights reserved.</span><a href="../privacy-policy.html">Privacy Policy</a></div>
     </div>

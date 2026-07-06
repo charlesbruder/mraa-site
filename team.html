@@ -138,7 +138,7 @@
   <section class="section section--dark">
     <div class="container">
       <div class="section-header"><h2>Interested in Playing?</h2><p style="color:rgba(255,255,255,0.7);">Join Mizzou Rugby — no experience required.</p></div>
-      <form class="multistep" data-multistep onsubmit="return false;">
+      <form class="multistep" data-multistep name="play-interest" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="play-interest"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true">
         <div class="multistep__progress">
           <div class="multistep__step active"><span class="multistep__number">1</span>Basic Info</div>
           <div class="multistep__step"><span class="multistep__number">2</span>Personal</div>
@@ -146,33 +146,33 @@
         </div>
         <div class="multistep__panel active">
           <div class="form-row">
-            <div class="form-group"><label class="form-label" for="t-first">First Name</label><input class="form-input" id="t-first"></div>
-            <div class="form-group"><label class="form-label" for="t-last">Last Name</label><input class="form-input" id="t-last"></div>
+            <div class="form-group"><label class="form-label" for="t-first">First Name</label><input class="form-input" id="t-first" name="t-first"></div>
+            <div class="form-group"><label class="form-label" for="t-last">Last Name</label><input class="form-input" id="t-last" name="t-last"></div>
           </div>
-          <div class="form-group"><label class="form-label" for="t-email">Email</label><input class="form-input" id="t-email" type="email"></div>
-          <div class="form-group"><label class="form-label" for="t-phone">Phone</label><input class="form-input" id="t-phone" type="tel"></div>
-          <div class="form-group"><label class="form-label" for="t-addr">Address</label><input class="form-input" id="t-addr"></div>
+          <div class="form-group"><label class="form-label" for="t-email">Email</label><input class="form-input" id="t-email" name="t-email" type="email"></div>
+          <div class="form-group"><label class="form-label" for="t-phone">Phone</label><input class="form-input" id="t-phone" name="t-phone" type="tel"></div>
+          <div class="form-group"><label class="form-label" for="t-addr">Address</label><input class="form-input" id="t-addr" name="t-addr"></div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label" for="t-city">City</label><input class="form-input" id="t-city"></div>
-            <div class="form-group"><label class="form-label" for="t-state">State</label><input class="form-input" id="t-state"></div>
-            <div class="form-group"><label class="form-label" for="t-zip">Zip</label><input class="form-input" id="t-zip"></div>
+            <div class="form-group"><label class="form-label" for="t-city">City</label><input class="form-input" id="t-city" name="t-city"></div>
+            <div class="form-group"><label class="form-label" for="t-state">State</label><input class="form-input" id="t-state" name="t-state"></div>
+            <div class="form-group"><label class="form-label" for="t-zip">Zip</label><input class="form-input" id="t-zip" name="t-zip"></div>
           </div>
           <div class="multistep__nav"><span></span><button class="btn btn--primary" data-next>Next →</button></div>
         </div>
         <div class="multistep__panel">
-          <div class="form-group"><label class="form-label" for="t-hs">High School</label><input class="form-input" id="t-hs"></div>
+          <div class="form-group"><label class="form-label" for="t-hs">High School</label><input class="form-input" id="t-hs" name="t-hs"></div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label" for="t-ht">Height</label><input class="form-input" id="t-ht"></div>
-            <div class="form-group"><label class="form-label" for="t-wt">Weight</label><input class="form-input" id="t-wt"></div>
+            <div class="form-group"><label class="form-label" for="t-ht">Height</label><input class="form-input" id="t-ht" name="t-ht"></div>
+            <div class="form-group"><label class="form-label" for="t-wt">Weight</label><input class="form-input" id="t-wt" name="t-wt"></div>
           </div>
-          <div class="form-group"><label class="form-label" for="t-sports">Sports Played</label><textarea class="form-textarea" id="t-sports"></textarea></div>
+          <div class="form-group"><label class="form-label" for="t-sports">Sports Played</label><textarea class="form-textarea" id="t-sports" name="t-sports"></textarea></div>
           <div class="multistep__nav"><button class="btn btn--outline" data-prev>← Back</button><button class="btn btn--primary" data-next>Next →</button></div>
         </div>
         <div class="multistep__panel">
-          <div class="form-group"><label class="form-label" for="t-exp">Years of Experience</label><input class="form-input" id="t-exp" type="number"></div>
-          <div class="form-group"><label class="form-label" for="t-pos">Position</label><input class="form-input" id="t-pos"></div>
-          <div class="form-group"><label class="form-label" for="t-clubs">Previous Teams/Clubs</label><textarea class="form-textarea" id="t-clubs"></textarea></div>
-          <div class="form-group"><label class="form-label" for="t-refs">Coach References</label><textarea class="form-textarea" id="t-refs"></textarea></div>
+          <div class="form-group"><label class="form-label" for="t-exp">Years of Experience</label><input class="form-input" id="t-exp" name="t-exp" type="number"></div>
+          <div class="form-group"><label class="form-label" for="t-pos">Position</label><input class="form-input" id="t-pos" name="t-pos"></div>
+          <div class="form-group"><label class="form-label" for="t-clubs">Previous Teams/Clubs</label><textarea class="form-textarea" id="t-clubs" name="t-clubs"></textarea></div>
+          <div class="form-group"><label class="form-label" for="t-refs">Coach References</label><textarea class="form-textarea" id="t-refs" name="t-refs"></textarea></div>
           <div class="multistep__nav"><button class="btn btn--outline" data-prev>← Back</button><button type="submit" class="btn btn--primary">Submit</button></div>
         </div>
       </form>
@@ -186,12 +186,12 @@
         <div class="footer__brand">
           <div class="nav__logo-text" style="color:var(--color-gold);">Mizzou Rugby <span style="color:rgba(255,255,255,0.6);">Alumni Association</span></div>
           <p>Connecting generations of Mizzou Rugby. Supporting the present. Building the future.</p>
-          <div class="social-links"><a href="#" class="social-link">FB</a><a href="#" class="social-link">IG</a><a href="#" class="social-link">X</a><a href="#" class="social-link">LI</a></div>
+          <div class="social-links"><a href="#" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="#" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37a4 4 0 1 1-7.914 1.173A4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="#" class="social-link" aria-label="Twitter/X"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20"/></svg></a><a href="#" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.34"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div>
         </div>
         <div class="footer__col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="alumni.html">Alumni</a><a href="news.html">News</a><a href="history.html">History</a></div>
         <div class="footer__col"><h4>Get Involved</h4><a href="donate.html">Donate</a><a href="events.html">Events</a><a href="sponsors.html">Sponsors</a><a href="contact.html">Volunteer</a><a href="shop.html">Shop</a></div>
         <div class="footer__col"><h4>Resources</h4><a href="team.html">Current Team</a><a href="events.html">Schedule</a><a href="privacy-policy.html">Privacy Policy</a><a href="contact.html">Contact Us</a></div>
-        <div class="footer__col footer__newsletter"><h4>Newsletter</h4><p>Get updates delivered to your inbox.</p><form class="footer__newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email"><button class="btn btn--primary btn--sm">Go</button></form></div>
+        <div class="footer__col footer__newsletter"><h4>Newsletter</h4><p>Get updates delivered to your inbox.</p><form class="footer__newsletter-form" name="newsletter" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="newsletter"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true"><input type="email" name="email" placeholder="Your email" aria-label="Email for newsletter" required><button class="btn btn--primary btn--sm">Go</button></form></div>
       </div>
       <div class="footer__bottom"><span>&copy; 2026 Mizzou Rugby Alumni Association. All rights reserved.</span><a href="privacy-policy.html">Privacy Policy</a></div>
     </div>
