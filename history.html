@@ -175,10 +175,20 @@
   <section class="section section--dark">
     <div class="container">
       <div class="section-header"><h2>Were You There?</h2><p style="color:rgba(255,255,255,0.7);">Share your memories of Mizzou Rugby.</p></div>
-      <form class="form" style="margin:0 auto;" name="history-submission" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="history-submission"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true">
-        <div class="form-group"><label class="form-label" style="color:#fff;" for="s-name">Name</label><input class="form-input" id="s-name" name="s-name"></div>
-        <div class="form-group"><label class="form-label" style="color:#fff;" for="s-years">Years Played</label><input class="form-input" id="s-years" name="s-years"></div>
-        <div class="form-group"><label class="form-label" style="color:#fff;" for="s-story">Memory / Story</label><textarea class="form-textarea" id="s-story" name="s-story" rows="6"></textarea></div>
+      <form class="form" style="margin:0 auto;" name="history-submission" method="POST" action="/thanks.html" enctype="multipart/form-data" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="history-submission"><input type="hidden" name="season" value="not specified"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="s-name">Name</label><input class="form-input" id="s-name" name="h-name" required></div>
+          <div class="form-group"><label class="form-label" for="s-email">Email</label><input class="form-input" id="s-email" name="h-email" type="email" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="s-years">Years Played</label><input class="form-input" id="s-years" name="h-played" placeholder="e.g. 1993&ndash;1996"></div>
+          <div class="form-group"><label class="form-label" for="s-position">Position(s) Played</label><input class="form-input" id="s-position" name="h-position" placeholder="e.g. Scrumhalf"></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="s-story">Memory / Story</label><textarea class="form-textarea" id="s-story" name="h-details" rows="6" placeholder="Which seasons? Who did you play with? What do you remember?"></textarea></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="s-photo1">Photo (up to 8 MB)</label><input class="form-input" type="file" id="s-photo1" name="photo-1" accept="image/*,.pdf"></div>
+          <div class="form-group"><label class="form-label" for="s-photo2">Another Photo (optional)</label><input class="form-input" type="file" id="s-photo2" name="photo-2" accept="image/*,.pdf"></div>
+        </div>
         <button type="submit" class="btn btn--primary">Submit Your Story</button>
       </form>
     </div>

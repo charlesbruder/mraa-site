@@ -65,28 +65,33 @@
     <div class="container">
       <div class="section-header"><h2>Share Your 1994 Season</h2><p>Roster info, season records, photos, stories — every detail helps.</p><div class="section-header__bar"></div></div>
       <!-- GHL FORM: History Submission → Pipeline: Alumni Content -->
-      <form class="form" style="margin:0 auto;" name="history-submission" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="history-submission"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true">
+      <form class="form" style="margin:0 auto;" name="history-submission" method="POST" action="/thanks.html" enctype="multipart/form-data" data-netlify="true" data-netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="history-submission"><input type="hidden" name="season" value="1994"><input type="text" name="bot-field" style="display:none" tabindex="-1" aria-hidden="true">
         <div class="form-group"><label class="form-label" for="h-type">What are you submitting?</label>
           <select class="form-select" id="h-type" name="h-type">
-            <option>Roster Information</option>
-            <option>Season Record / Results</option>
+            <option>Roster Info / Correction</option>
             <option>Photos</option>
-            <option>Stories / Memories</option>
-            <option>Coaching Staff</option>
+            <option>Story / Memory</option>
+            <option>Season Record / Match Results</option>
+            <option>Coach or Staff Info</option>
             <option>Other</option>
           </select>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label" for="h-name">Your Name</label><input class="form-input" id="h-name" name="h-name"></div>
-          <div class="form-group"><label class="form-label" for="h-email">Email</label><input class="form-input" id="h-email" name="h-email" type="email"></div>
+          <div class="form-group"><label class="form-label" for="h-name">Your Name</label><input class="form-input" id="h-name" name="h-name" required></div>
+          <div class="form-group"><label class="form-label" for="h-email">Email</label><input class="form-input" id="h-email" name="h-email" type="email" required></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label" for="h-class">Class Year</label><input class="form-input" id="h-class" name="h-class"></div>
-          <div class="form-group"><label class="form-label" for="h-played">Years Played</label><input class="form-input" id="h-played" name="h-played"></div>
+          <div class="form-group"><label class="form-label" for="h-class">Class Year</label><input class="form-input" id="h-class" name="h-class" placeholder="e.g. 1995"></div>
+          <div class="form-group"><label class="form-label" for="h-played">Years Played</label><input class="form-input" id="h-played" name="h-played" placeholder="e.g. 1992&ndash;1995"></div>
         </div>
-        <div class="form-group"><label class="form-label" for="h-info">Information to Share</label><textarea class="form-textarea" id="h-info" name="h-info" rows="6" placeholder="Roster names, record, notable games, memories..."></textarea></div>
-        <div class="form-group"><label class="form-label">Photo Upload</label><div class="form-file">📎 Click or drag files here to upload</div></div>
-        <button type="submit" class="btn btn--primary">Submit Information</button>
+        <div class="form-group"><label class="form-label" for="h-position">Position(s) Played</label><input class="form-input" id="h-position" name="h-position" placeholder="e.g. Flanker, Lock"></div>
+        <div class="form-group"><label class="form-label" for="h-details">Details</label><textarea class="form-textarea" id="h-details" name="h-details" rows="5" placeholder="Teammates and their positions, coaches, match results, hometowns, stories — every detail helps us rebuild the 1994 season."></textarea></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="h-photo1">Photo (up to 8 MB)</label><input class="form-input" type="file" id="h-photo1" name="photo-1" accept="image/*,.pdf"></div>
+          <div class="form-group"><label class="form-label" for="h-photo2">Another Photo (optional)</label><input class="form-input" type="file" id="h-photo2" name="photo-2" accept="image/*,.pdf"></div>
+        </div>
+        <p class="text-muted text-sm" style="margin-bottom:var(--space-md);">Have a whole shoebox of photos? Send what fits and mention it in the details — we'll follow up.</p>
+        <button type="submit" class="btn btn--primary">Submit</button>
       </form>
     </div>
   </section>
