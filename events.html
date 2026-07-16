@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events | Mizzou Rugby Alumni Association</title>
+  <title>Calendar | Mizzou Rugby Alumni Association</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
         <a href="index.html">Home</a>
         <a href="alumni.html">Alumni</a>
         <a href="about.html">About</a>
-        <a href="events.html" class="active">Events</a>
+        <a href="events.html" class="active">Calendar</a>
         <a href="donate.html">Donate</a>
         <a href="sponsors.html">Sponsors</a>
         <a href="news.html">News</a>
@@ -38,7 +38,7 @@
     <a href="index.html">Home</a>
     <a href="alumni.html">Alumni</a>
     <a href="about.html">About</a>
-    <a href="events.html">Events</a>
+    <a href="events.html">Calendar</a>
     <a href="donate.html">Donate</a>
     <a href="sponsors.html">Sponsors</a>
     <a href="news.html">News</a>
@@ -54,32 +54,102 @@
     <div class="hero__bg">PLACEHOLDER IMAGE — EVENTS HEADER</div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title">Stay Connected Through Events</h1>
-      <p class="hero__subtitle">Join fellow Mizzou Rugby alumni at our upcoming events.</p>
+      <h1 class="hero__title">Calendar</h1>
+      <p class="hero__subtitle">Matches, reunions, and everything on the Mizzou Rugby schedule.</p>
     </div>
   </section>
 
-  <!-- UPCOMING EVENTS -->
+  <!-- UPCOMING / CALENDAR -->
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <h2>Upcoming Events</h2>
+        <h2>Upcoming</h2>
+        <p>Matches and alumni events, in date order.</p>
         <div class="section-header__bar"></div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:var(--space-lg);">
-        
+      <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
+        <div class="match-row">
+          <div class="match-row__date">Sat, Sept. 5</div>
+          <div class="match-row__body"><strong>Mizzou vs Oklahoma State</strong><span>Columbia, MO</span></div>
+          <span class="match-chip match-chip--home">Home</span>
+        </div>
+        <div class="match-row">
+          <div class="match-row__date">Sat, Sept. 12</div>
+          <div class="match-row__body"><strong>Mizzou vs Drury</strong><span>Columbia, MO</span></div>
+          <span class="match-chip match-chip--home">Home</span>
+        </div>
+        <div class="match-row">
+          <div class="match-row__date">Sat, Sept. 26</div>
+          <div class="match-row__body"><strong>Mizzou vs Oklahoma</strong><span>Columbia, MO</span></div>
+          <span class="match-chip match-chip--home">Home</span>
+        </div>
+        <div class="match-row">
+          <div class="match-row__date">Sat, Oct. 3</div>
+          <div class="match-row__body"><strong>Mizzou at Kansas State</strong><span>Manhattan, KS</span></div>
+          <span class="match-chip match-chip--away">Away</span>
+        </div>
+        <div class="match-row">
+          <div class="match-row__date">Sat, Oct. 10</div>
+          <div class="match-row__body"><strong>Mizzou vs Arkansas</strong><span>Columbia, MO</span></div>
+          <span class="match-chip match-chip--home">Home</span>
+        </div>
+        <div class="event-card" style="margin:var(--space-sm) 0;">
+          <div class="event-card__image">PLACEHOLDER IMAGE</div>
           <div class="event-card__body">
-            <p class="event-card__date">October 16–17, 2026</p>
+            <p class="event-card__date">October 16&ndash;17, 2026</p>
             <h3 class="event-card__title">Alumni Weekend 2026</h3>
             <p class="event-card__location">Stankowski Field, Columbia, MO</p>
-            <p class="event-card__text">Sixty years in the making. Friday night: Alumni Dinner and Hall of Fame Induction. Saturday: the annual Alumni Match, then Mizzou takes on Kansas — followed by a post-match celebration with food, drinks, and music.</p>
+            <p class="event-card__text">Sixty years in the making. Friday night: Alumni Dinner and Hall of Fame Induction. Saturday: the annual Alumni Match, then Mizzou takes on Kansas &mdash; followed by a post-match celebration with food, drinks, and music.</p>
             <div class="btn-group">
               <a href="event-detail.html" class="btn btn--primary btn--sm">Learn More</a>
               <a href="event-detail.html#rsvp" class="btn btn--outline-dark btn--sm">RSVP</a>
             </div>
           </div>
         </div>
-        
+        <div class="match-row">
+          <div class="match-row__date">Sat, Oct. 17</div>
+          <div class="match-row__body"><strong>Mizzou vs Kansas</strong><span>Columbia, MO <a href="event-detail.html" class="match-row__note">Part of Alumni Weekend</a></span></div>
+          <span class="match-chip match-chip--home">Home</span>
+        </div>
+        <div class="match-row">
+          <div class="match-row__date">Sat, Oct. 24</div>
+          <div class="match-row__body"><strong>Mizzou at Nebraska</strong><span>Lincoln, NE</span></div>
+          <span class="match-chip match-chip--away">Away</span>
+        </div>
+      </div>
+
+      <details class="cal-details">
+        <summary class="btn btn--outline-dark">Show month view</summary>
+        <div class="grid grid--2" style="margin-top:var(--space-lg); align-items:start;">
+          <div class="cal">
+            <div class="cal__title">September 2026</div>
+            <div class="cal__grid">
+              <span class="cal__dow">S</span><span class="cal__dow">M</span><span class="cal__dow">T</span><span class="cal__dow">W</span><span class="cal__dow">T</span><span class="cal__dow">F</span><span class="cal__dow">S</span>
+              <span></span><span></span><span class="cal__day">1</span><span class="cal__day">2</span><span class="cal__day">3</span><span class="cal__day">4</span><span class="cal__day cal__day--home">5<em>OSU</em></span>
+              <span class="cal__day">6</span><span class="cal__day">7</span><span class="cal__day">8</span><span class="cal__day">9</span><span class="cal__day">10</span><span class="cal__day">11</span><span class="cal__day cal__day--home">12<em>DRU</em></span>
+              <span class="cal__day">13</span><span class="cal__day">14</span><span class="cal__day">15</span><span class="cal__day">16</span><span class="cal__day">17</span><span class="cal__day">18</span><span class="cal__day">19</span>
+              <span class="cal__day">20</span><span class="cal__day">21</span><span class="cal__day">22</span><span class="cal__day">23</span><span class="cal__day">24</span><span class="cal__day">25</span><span class="cal__day cal__day--home">26<em>OU</em></span>
+              <span class="cal__day">27</span><span class="cal__day">28</span><span class="cal__day">29</span><span class="cal__day">30</span>
+            </div>
+          </div>
+          <div class="cal">
+            <div class="cal__title">October 2026</div>
+            <div class="cal__grid">
+              <span class="cal__dow">S</span><span class="cal__dow">M</span><span class="cal__dow">T</span><span class="cal__dow">W</span><span class="cal__dow">T</span><span class="cal__dow">F</span><span class="cal__dow">S</span>
+              <span></span><span></span><span></span><span></span><span class="cal__day">1</span><span class="cal__day">2</span><span class="cal__day cal__day--away">3<em>@KSU</em></span>
+              <span class="cal__day">4</span><span class="cal__day">5</span><span class="cal__day">6</span><span class="cal__day">7</span><span class="cal__day">8</span><span class="cal__day">9</span><span class="cal__day cal__day--home">10<em>ARK</em></span>
+              <span class="cal__day">11</span><span class="cal__day">12</span><span class="cal__day">13</span><span class="cal__day">14</span><span class="cal__day">15</span><span class="cal__day cal__day--event">16<em>Dinner</em></span><span class="cal__day cal__day--home">17<em>KU</em></span>
+              <span class="cal__day">18</span><span class="cal__day">19</span><span class="cal__day">20</span><span class="cal__day">21</span><span class="cal__day">22</span><span class="cal__day">23</span><span class="cal__day cal__day--away">24<em>@NEB</em></span>
+              <span class="cal__day">25</span><span class="cal__day">26</span><span class="cal__day">27</span><span class="cal__day">28</span><span class="cal__day">29</span><span class="cal__day">30</span><span class="cal__day">31</span>
+            </div>
+          </div>
+        </div>
+        <div class="cal__legend">
+          <span><i class="cal__swatch cal__swatch--home"></i> Home match</span>
+          <span><i class="cal__swatch cal__swatch--away"></i> Away match</span>
+          <span><i class="cal__swatch cal__swatch--event"></i> Alumni event</span>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -87,7 +157,7 @@
   <section class="section section--light">
     <div class="container text-center">
       <h2 style="margin-bottom:var(--space-md);">Looking for past events?</h2>
-      <a href="#" class="btn btn--outline-dark">View Past Events</a>
+      <a href="history.html" class="btn btn--outline-dark">Browse the History Archive</a>
     </div>
   </section>
 
@@ -171,7 +241,7 @@
         <div class="footer__col">
           <h4>Get Involved</h4>
           <a href="donate.html">Donate</a>
-          <a href="events.html">Events</a>
+          <a href="events.html">Calendar</a>
           <a href="sponsors.html">Sponsors</a>
           <a href="contact.html">Volunteer</a>
           <a href="shop.html">Shop</a>

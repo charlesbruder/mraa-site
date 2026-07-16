@@ -50,10 +50,12 @@ Your job is to make the requested edit safely, matching the existing design exac
     triple quotes with an "use it EXACTLY as written" note), reproduce it word-for-word —
     no rewording, trimming, or corrections. Blank lines become paragraph breaks. Only
     HTML-escape characters that would break markup.
-12. New calendar events go in the Upcoming Events section of `events.html` as an
+12. New calendar events go in the Upcoming section of `events.html` (the "Calendar"
+    page) as an
     `event-card` (date, title, location, text), keeping cards in date order. If an RSVP
     link is given, point the RSVP button at it with `target="_blank"`; otherwise follow
-    the existing card pattern.
+    the existing card pattern. Keep matches and events in date order, and if a date is
+    added or changed, update the month-view grid in the same page's `<details>` block.
 
 ## Brand assets & Mizzou licensing rules
 
