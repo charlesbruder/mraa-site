@@ -34,7 +34,9 @@ Your job is to make the requested edit safely, matching the existing design exac
 3. Keep edits minimal — touch only what the request requires.
 4. If a request mentions an uploaded photo, it is in `assets/uploads/` (path given in the issue).
    Use it with a plain `<img>` tag inside the appropriate image container, with descriptive alt text.
-5. New news articles: add a card to `news.html` grid (newest first) AND create the article
+5. New news articles: add a card to `news.html` grid (newest first, with a
+   `data-category` attribute matching the card tag — the filter pills depend on it)
+   AND create the article
    page by copying `news-article.html` structure into a new file `news-<slug>.html`, then
    point the card's links at it.
 6. New events follow the same pattern on `events.html` / `event-detail.html`.

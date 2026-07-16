@@ -108,3 +108,31 @@ window.MRAA_pruneDates = function (todayOverride) {
   });
 };
 window.MRAA_pruneDates();
+
+// --- News category filter pills ---
+document.querySelectorAll('.filter-pills').forEach(function (bar) {
+  bar.addEventListener('click', function (e) {
+    var pill = e.target.closest('.filter-pill');
+    if (!pill) return;
+    bar.querySelectorAll('.filter-pill').forEach(function (p) { p.classList.toggle('active', p === pill); });
+    var want = pill.getAttribute('data-filter');
+    var grid = bar.parentElement.querySelector('.grid');
+    if (!grid) return;
+    var shown = 0;
+    grid.querySelectorAll('article.card').forEach(function (card) {
+      var show = want === 'all' || card.getAttribute('data-category') === want;
+      card.style.display = show ? '' : 'none';
+      if (show) shown++;
+    });
+    var note = grid.querySelector('.no-posts');
+    if (!shown && !note) {
+      note = document.createElement('p');
+      note.className = 'no-posts text-center text-muted';
+      note.style.gridColumn = '1 / -1';
+      note.textContent = 'No posts in this category yet — check back soon.';
+      grid.appendChild(note);
+    } else if (shown && note) {
+      note.remove();
+    }
+  });
+});
