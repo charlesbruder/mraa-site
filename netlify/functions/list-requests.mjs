@@ -1,8 +1,14 @@
 import { checkToken, unauthorized, ghJson, REPO, PREVIEW_SLUG } from '../lib/util.mjs'
 
-// A PR being open doesn't mean its Netlify deploy preview has finished
-// building — report "ready" only once the preview URL actually responds,
-// otherwise the View Preview button would 404 for the first ~minute.
+const FEEDBACK_MARKER = 'Revision requested via the MRAA admin page'
+const REVISION_STUCK_MS = 15 * 60 * 1000 // fall back to ready if no commit follows feedback
+
+// A PR being open doesn't mean its preview is current: the preview build may
+// still be running (first build or after a revision), or Claude may still be
+// working on requested changes. Statuses:
+//   working  — first edit or first preview build in progress
+//   updating — revision requested; Claude editing or preview rebuilding
+//   ready    — preview URL serves the latest commit's build
 async function previewIsLive(url) {
   try {
     const res = await fetch(url, { method: 'HEAD', signal: AbortSignal.timeout(4000) })
@@ -10,6 +16,38 @@ async function previewIsLive(url) {
   } catch {
     return false
   }
+}
+
+async function openPrState(pr) {
+  const url = `https://deploy-preview-${pr.number}--${PREVIEW_SLUG}.netlify.app`
+  const [comments, commits, combined] = await Promise.all([
+    ghJson(`/repos/${REPO}/issues/${pr.number}/comments?per_page=100`),
+    ghJson(`/repos/${REPO}/pulls/${pr.number}/commits?per_page=100`),
+    ghJson(`/repos/${REPO}/commits/${pr.head.sha}/status`),
+  ])
+
+  const lastFeedback = comments
+    .filter((c) => (c.body || '').includes(FEEDBACK_MARKER))
+    .map((c) => new Date(c.created_at).getTime())
+    .sort((a, b) => b - a)[0]
+  const lastCommit = commits.length
+    ? new Date(commits[commits.length - 1].commit.committer.date).getTime()
+    : 0
+  const hadRevision = Boolean(lastFeedback)
+
+  // Feedback newer than the latest commit: Claude is still writing the revision.
+  if (lastFeedback && lastFeedback > lastCommit) {
+    if (Date.now() - lastFeedback < REVISION_STUCK_MS) return { status: 'updating', preview: null }
+    // revision seems stuck — surface the existing preview rather than blocking forever
+  }
+
+  // Latest commit's preview build not green yet.
+  if (combined.state !== 'success') {
+    return { status: hadRevision ? 'updating' : 'working', preview: null }
+  }
+
+  if (await previewIsLive(url)) return { status: 'ready', preview: url }
+  return { status: hadRevision ? 'updating' : 'working', preview: null }
 }
 
 export default async (req) => {
@@ -27,13 +65,8 @@ export default async (req) => {
       let status = 'working'
       let preview = null
       if (pr?.merged_at) status = 'published'
-      else if (pr && pr.state === 'open') {
-        const url = `https://deploy-preview-${pr.number}--${PREVIEW_SLUG}.netlify.app`
-        if (await previewIsLive(url)) {
-          status = 'ready'
-          preview = url
-        } // else: keep "working" — preview still building
-      } else if ((pr && pr.state === 'closed') || issue.state === 'closed') status = 'discarded'
+      else if (pr && pr.state === 'open') ({ status, preview } = await openPrState(pr))
+      else if ((pr && pr.state === 'closed') || issue.state === 'closed') status = 'discarded'
 
       return {
         issue: issue.number,

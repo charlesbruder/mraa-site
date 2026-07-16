@@ -214,6 +214,7 @@
 
   const CHIPS = {
     working: ['chip--working', 'Working on it'],
+    updating: ['chip--working', 'Updating preview'],
     ready: ['chip--ready', 'Ready to preview'],
     published: ['chip--published', 'Published'],
     discarded: ['chip--discarded', 'Discarded'],
@@ -254,7 +255,7 @@
     chip.textContent = chipLabel
     wrap.appendChild(chip)
 
-    if (item.status === 'working') {
+    if (item.status === 'working' || item.status === 'updating') {
       chip.insertAdjacentHTML('beforebegin', '<span class="spin" style="margin-right:0.5rem"></span>')
     }
 
@@ -313,7 +314,7 @@
         send.disabled = true
         try {
           await api('feedback', { pr: item.pr, message: ta.value })
-          fb.innerHTML = '<p class="help">Feedback sent — the preview will update in a few minutes.</p>'
+          fb.innerHTML = '<p class="help">Feedback sent — this request will show “Updating preview” until the new version is ready.</p>'
           setTimeout(refresh, 3000)
         } catch (ex) {
           alert(ex.message)
@@ -327,11 +328,13 @@
       adjust.onclick = () => fb.classList.toggle('hidden')
     }
 
-    if (item.status === 'working') {
+    if (item.status === 'working' || item.status === 'updating') {
       const p = document.createElement('p')
       p.className = 'meta'
       p.style.marginTop = '0.5rem'
-      p.textContent = 'Usually takes 2–5 minutes. This list refreshes automatically.'
+      p.textContent = item.status === 'updating'
+        ? 'Making your requested changes — the preview button will come back when the update is done.'
+        : 'Usually takes 2–5 minutes. This list refreshes automatically.'
       wrap.appendChild(p)
     }
 
