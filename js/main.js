@@ -76,3 +76,35 @@
     });
   });
 })();
+
+// --- Self-cleaning dates: past-dated items hide themselves ---
+window.MRAA_pruneDates = function (todayOverride) {
+  function localISO(d) {
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  var today = todayOverride || localISO(new Date());
+  var month = today.slice(0, 7);
+  document.querySelectorAll('[data-date]').forEach(function (el) {
+    el.style.display = today > el.getAttribute('data-date') ? 'none' : '';
+  });
+  document.querySelectorAll('[data-month]').forEach(function (el) {
+    el.style.display = month > el.getAttribute('data-month') ? 'none' : '';
+  });
+  document.querySelectorAll('[data-empty-note]').forEach(function (c) {
+    var any = Array.prototype.some.call(c.querySelectorAll('[data-date]'), function (el) { return el.style.display !== 'none'; });
+    var note = c.querySelector('.no-upcoming');
+    if (!any && !note) {
+      note = document.createElement('p');
+      note.className = 'no-upcoming text-center text-muted';
+      note.textContent = c.getAttribute('data-empty-note');
+      c.appendChild(note);
+    } else if (any && note) {
+      note.remove();
+    }
+  });
+  document.querySelectorAll('[data-hide-when-empty]').forEach(function (c) {
+    var any = Array.prototype.some.call(c.querySelectorAll('[data-date], [data-month]'), function (el) { return el.style.display !== 'none'; });
+    c.style.display = any ? '' : 'none';
+  });
+};
+window.MRAA_pruneDates();

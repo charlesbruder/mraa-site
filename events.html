@@ -67,33 +67,33 @@
         <p>Matches and alumni events, in date order.</p>
         <div class="section-header__bar"></div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
-        <div class="match-row">
+      <div style="display:flex;flex-direction:column;gap:var(--space-sm);" data-empty-note="Nothing on the calendar right now — new dates are coming, check back soon.">
+        <div class="match-row" data-date="2026-09-05">
           <div class="match-row__date">Sat, Sept. 5</div>
           <div class="match-row__body"><strong>Mizzou vs Oklahoma State</strong><span>Columbia, MO</span></div>
           <span class="match-chip match-chip--home">Home</span>
         </div>
-        <div class="match-row">
+        <div class="match-row" data-date="2026-09-12">
           <div class="match-row__date">Sat, Sept. 12</div>
           <div class="match-row__body"><strong>Mizzou vs Drury</strong><span>Columbia, MO</span></div>
           <span class="match-chip match-chip--home">Home</span>
         </div>
-        <div class="match-row">
+        <div class="match-row" data-date="2026-09-26">
           <div class="match-row__date">Sat, Sept. 26</div>
           <div class="match-row__body"><strong>Mizzou vs Oklahoma</strong><span>Columbia, MO</span></div>
           <span class="match-chip match-chip--home">Home</span>
         </div>
-        <div class="match-row">
+        <div class="match-row" data-date="2026-10-03">
           <div class="match-row__date">Sat, Oct. 3</div>
           <div class="match-row__body"><strong>Mizzou at Kansas State</strong><span>Manhattan, KS</span></div>
           <span class="match-chip match-chip--away">Away</span>
         </div>
-        <div class="match-row">
+        <div class="match-row" data-date="2026-10-10">
           <div class="match-row__date">Sat, Oct. 10</div>
           <div class="match-row__body"><strong>Mizzou vs Arkansas</strong><span>Columbia, MO</span></div>
           <span class="match-chip match-chip--home">Home</span>
         </div>
-        <div class="event-card" style="margin:var(--space-sm) 0;">
+        <div class="event-card" style="margin:var(--space-sm) 0;" data-date="2026-10-17">
           <div class="event-card__image">PLACEHOLDER IMAGE</div>
           <div class="event-card__body">
             <p class="event-card__date">October 16&ndash;17, 2026</p>
@@ -106,22 +106,22 @@
             </div>
           </div>
         </div>
-        <div class="match-row">
+        <div class="match-row" data-date="2026-10-17">
           <div class="match-row__date">Sat, Oct. 17</div>
           <div class="match-row__body"><strong>Mizzou vs Kansas</strong><span>Columbia, MO <a href="event-detail.html" class="match-row__note">Part of Alumni Weekend</a></span></div>
           <span class="match-chip match-chip--home">Home</span>
         </div>
-        <div class="match-row">
+        <div class="match-row" data-date="2026-10-24">
           <div class="match-row__date">Sat, Oct. 24</div>
           <div class="match-row__body"><strong>Mizzou at Nebraska</strong><span>Lincoln, NE</span></div>
           <span class="match-chip match-chip--away">Away</span>
         </div>
       </div>
 
-      <details class="cal-details">
+      <details class="cal-details" data-hide-when-empty>
         <summary class="btn btn--outline-dark">Show month view</summary>
         <div class="grid grid--2" style="margin-top:var(--space-lg); align-items:start;">
-          <div class="cal">
+          <div class="cal" data-month="2026-09">
             <div class="cal__title">September 2026</div>
             <div class="cal__grid">
               <span class="cal__dow">S</span><span class="cal__dow">M</span><span class="cal__dow">T</span><span class="cal__dow">W</span><span class="cal__dow">T</span><span class="cal__dow">F</span><span class="cal__dow">S</span>
@@ -132,7 +132,7 @@
               <span class="cal__day">27</span><span class="cal__day">28</span><span class="cal__day">29</span><span class="cal__day">30</span>
             </div>
           </div>
-          <div class="cal">
+          <div class="cal" data-month="2026-10">
             <div class="cal__title">October 2026</div>
             <div class="cal__grid">
               <span class="cal__dow">S</span><span class="cal__dow">M</span><span class="cal__dow">T</span><span class="cal__dow">W</span><span class="cal__dow">T</span><span class="cal__dow">F</span><span class="cal__dow">S</span>
