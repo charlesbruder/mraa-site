@@ -39,6 +39,13 @@ Your job is to make the requested edit safely, matching the existing design exac
    AND create the article
    page by copying `news-article.html` structure into a new file `news-<slug>.html`, then
    point the card's links at it.
+   **One image per article, everywhere.** Each news article has exactly ONE image — the
+   one chosen for the article (its hero). Every preview of that article anywhere on the
+   site (news.html grid card, news.html featured block, index.html "Latest" card, related-
+   article cards on other article pages) MUST use that same image file. When creating a
+   post with an uploaded photo, use it for the article hero AND all its cards. When a
+   request changes an article's photo, find every page that links to that article
+   (`grep -l "news-<slug>.html" *.html`) and update the image in each place too.
 6. New events follow the same pattern on `events.html` / `event-detail.html`.
 7. Dates in content are written like "April 10, 2026".
 8. If a request is ambiguous, make the most reasonable interpretation and note your
