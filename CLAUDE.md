@@ -65,6 +65,14 @@ Your job is to make the requested edit safely, matching the existing design exac
     link is given, point the RSVP button at it with `target="_blank"`; otherwise follow
     the existing card pattern. Keep matches and events in date order, and if a date is
     added or changed, update the month-view grid in the same page's `<details>` block.
+13. **Gold year links on `history.html`**: a year in the archive grid turns gold once its
+    season page has real content. Whenever you add real content (roster, results, photos,
+    stories) to a `history/<year>.html` page — replacing its "This Page Needs Your Help"
+    empty state — you MUST also change that year's link on `history.html` from
+    `year-link--muted` to `year-link--active`. Never mark a year gold while its page still
+    shows the empty state, and if a page's content is ever removed, flip its link back to
+    `year-link--muted`. Season pages follow the fall year: e.g. the 1966&ndash;67 season
+    lives on `history/1966.html`.
 
 ## Brand assets & Mizzou licensing rules
 
