@@ -72,7 +72,9 @@ Your job is to make the requested edit safely, matching the existing design exac
     `year-link--muted` to `year-link--active`. Never mark a year gold while its page still
     shows the empty state, and if a page's content is ever removed, flip its link back to
     `year-link--muted`. Season pages follow the fall year: e.g. the 1966&ndash;67 season
-    lives on `history/1966.html`.
+    lives on `history/1966.html`. Exception: the CURRENT season's year (now 2026) is gold
+    and links from the grid straight to `team.html`; its `history/2026.html` page points
+    visitors to the Team page until the season is over and gets archived.
 
 ## Brand assets & Mizzou licensing rules
 
