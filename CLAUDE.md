@@ -75,6 +75,21 @@ Your job is to make the requested edit safely, matching the existing design exac
     lives on `history/1966.html`. Exception: the CURRENT season's year (now 2026) is gold
     and links from the grid straight to `team.html`; its `history/2026.html` page points
     visitors to the Team page until the season is over and gets archived.
+14. **Year-page template**: every filled `history/<year>.html` page follows this section
+    order (copy an existing filled page like `history/1973.html` as the model):
+    hero (real photo when available) &rarr; season record strip (black bar, gold uppercase
+    text: W&ndash;L&ndash;T and tournament finishes; say "record unknown" with the known
+    parts if incomplete) &rarr; season write-up ("The <year>&ndash;<yy> Season" heading, short
+    story paragraphs, small source-credit line) &rarr; roster (`roster-table`; leadership
+    is noted in parentheses directly after the player's name, e.g. "Phil Howard
+    (President)", "Joe Bowen (Captain)" &mdash; never as a separate leadership list; when
+    the roster is unknown, use an empty-state with a "Submit Roster Info" button linking
+    to `#submit-info`) &rarr; "Voices of the Season" (`story-card` quotes and player
+    stories; omit the section when empty) &rarr; "From the Archives" (linked clippings in
+    `match-row`s; omit when empty) &rarr; submit form &rarr; year-nav. Photos are captioned
+    `<figure>`s placed inside the section they illustrate. If a season wins a
+    championship, also add/update its card in the "Championship Seasons" section of
+    `history.html`.
 
 ## Brand assets & Mizzou licensing rules
 
