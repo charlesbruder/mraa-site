@@ -18,6 +18,7 @@ const FIELD = {
   classYear: '66W6Cmq1u0L1J0bdWxwt',
   submissionType: 'P25Xt9Cq8Jd1fGK6pG1f',
   gradYear: 'aLK8bPqr4aeiLnDdNQGY',
+  howHeard: '608hZ8wWuFCjupor2TiV',
 }
 
 const PIPELINE = {
@@ -127,6 +128,7 @@ const HANDLERS = {
         { id: FIELD.gradYear, field_value: d['a-gradyear'] || '' },
         { id: FIELD.positions, field_value: d['a-position'] || '' },
         { id: FIELD.yearsPlayed, field_value: [d['a-start'], d['a-end']].filter(Boolean).join('-') },
+        { id: FIELD.howHeard, field_value: d['a-hear'] || '' },
       ].filter((f) => f.field_value),
     })
     await addTag(id, 'Alumni Network')
