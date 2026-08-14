@@ -46,6 +46,15 @@ Your job is to make the requested edit safely, matching the existing design exac
    post with an uploaded photo, use it for the article hero AND all its cards. When a
    request changes an article's photo, find every page that links to that article
    (`grep -l "news-<slug>.html" *.html`) and update the image in each place too.
+   **Homepage "Latest" section, always.** Every new news article ALSO gets a card in the
+   "Latest From Mizzou Rugby" grid on `index.html`. That grid is ordered by publish date,
+   newest first, and holds the three most recent articles — so a new post goes at the TOP
+   of the grid, and if that pushes the count past three, delete the oldest card. Publish
+   date is the date in the card's `.card__meta` line (same date as the article page). The
+   card is a copy of the article's `news.html` card — same image, tag, title, date, and
+   summary text — but WITHOUT the `data-category` attribute, since `index.html` has no
+   filter pills. If a post's date, title, image, or summary is later corrected, update it
+   on `index.html` too, and re-sort the grid if the new date changes the order.
 6. New events follow the same pattern on `events.html` / `event-detail.html`.
 7. Dates in content are written like "April 10, 2026".
 8. If a request is ambiguous, make the most reasonable interpretation and note your
