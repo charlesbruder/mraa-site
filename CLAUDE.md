@@ -55,6 +55,18 @@ Your job is to make the requested edit safely, matching the existing design exac
    summary text — but WITHOUT the `data-category` attribute, since `index.html` has no
    filter pills. If a post's date, title, image, or summary is later corrected, update it
    on `index.html` too, and re-sort the grid if the new date changes the order.
+   **Pinned exception.** A card in the homepage grid carrying `data-pinned="true"` on its
+   `<article class="card">` is PINNED: it stays in the grid no matter how old it gets, and
+   is never the card you delete to make room. It keeps its normal publish-date position in
+   the order — pinning protects a card from removal, it does not move it to the top. When
+   a new post pushes the grid past three, remove the oldest UNPINNED card instead. At most
+   TWO cards may be pinned at any time, so there is always a free slot for the newest post;
+   if a request would leave three pinned, say so and leave the third unpinned rather than
+   dropping the new post. Pins are for posts that must stay visible until a date passes
+   (an upcoming event, a registration deadline) — once that date is past, remove the
+   `data-pinned` attribute so the card ages out normally. `data-pinned` is inert styling-wise
+   and only appears on `index.html`; never add it to `news.html` cards, and never add or
+   remove a pin unless the request asks for it.
 6. New events follow the same pattern on `events.html` / `event-detail.html`.
 7. Dates in content are written like "April 10, 2026".
 8. If a request is ambiguous, make the most reasonable interpretation and note your
