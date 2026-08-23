@@ -3,10 +3,10 @@
   "configurations": [
     {
       "name": "mraa-site",
-      "runtimeExecutable": "/usr/local/bin/node",
+      "runtimeExecutable": "node",
       "runtimeArgs": [
         "-e",
-        "require('http').createServer((q,r)=>{const fs=require('fs'),p=require('path'),u=q.url==='/'?'/index.html':q.url,f=p.join(process.cwd(),u),e=p.extname(f),t={'.html':'text/html','.css':'text/css','.js':'application/javascript'}[e]||'text/plain';fs.readFile(f,(err,d)=>{if(err){r.writeHead(404);r.end('Not found')}else{r.writeHead(200,{'Content-Type':t});r.end(d)}})}).listen(process.env.PORT||8090)"
+        "require('http').createServer((q,r)=>{const fs=require('fs'),p=require('path'),u=q.url==='/'?'/index.html':q.url,f=p.join(process.cwd(),u),e=p.extname(f),t={'.html':'text/html','.css':'text/css','.js':'application/javascript','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.pdf':'application/pdf'}[e]||'text/plain';fs.readFile(f,(err,d)=>{if(err){r.writeHead(404);r.end('Not found')}else{r.writeHead(200,{'Content-Type':t});r.end(d)}})}).listen(process.env.PORT||8090)"
       ],
       "port": 8090,
       "autoPort": true
