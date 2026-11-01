@@ -15,15 +15,15 @@ account the organization owns, not inside Zignal's account.
 3. Enter the new team's slug → confirm. The site moves with its settings, forms,
    env vars, and the `mraa-rugby.netlify.app` name intact.
 4. On the NEW account: reconnect the GitHub repo if prompted
-   (Site configuration → Build & deploy → Link repository → `skreenpeeker/mraa-site`).
-   This may require installing the Netlify GitHub App on skreenpeeker again — one browser click.
+   (Site configuration → Build & deploy → Link repository → `charlesbruder/mraa-site`).
+   This may require installing the Netlify GitHub App on charlesbruder again — one browser click.
 5. Verify: push a trivial commit → auto-deploy runs on the new account's fresh credits.
 6. Michael's account keeps nothing MRAA-related. Done.
 
 ## Option B — Recreate from scratch (fallback, ~30 min)
 Only if transfer fails. New account → Import from Git → select repo → then re-add env vars:
 `ADMIN_PASSWORD`, `ADMIN_SECRET` (generate new: `openssl rand -hex 32`), `GITHUB_TOKEN`,
-`GHL_API_TOKEN`.
+`GHL_API_TOKEN`, `GITHUB_REPO` (`charlesbruder/mraa-site`).
 Re-enable form detection (Site configuration → Forms). Old site must be deleted first
 to free the `mraa-rugby` name, or pick a new name.
 
