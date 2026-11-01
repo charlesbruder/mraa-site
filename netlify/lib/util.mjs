@@ -1,7 +1,7 @@
 // Shared helpers for the MRAA admin functions.
 import crypto from 'node:crypto'
 
-export const REPO = process.env.GITHUB_REPO || 'skreenpeeker/mraa-site'
+export const REPO = process.env.GITHUB_REPO || 'charlesbruder/mraa-site'
 export const PREVIEW_SLUG = process.env.PREVIEW_SLUG || 'mraa-rugby'
 const GH = 'https://api.github.com'
 

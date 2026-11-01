@@ -15,16 +15,26 @@ account the organization owns, not inside Zignal's account.
 3. Enter the new team's slug → confirm. The site moves with its settings, forms,
    env vars, and the `mraa-rugby.netlify.app` name intact.
 4. On the NEW account: reconnect the GitHub repo if prompted
-   (Site configuration → Build & deploy → Link repository → `skreenpeeker/mraa-site`).
-   This may require installing the Netlify GitHub App on skreenpeeker again — one browser click.
+   (Site configuration → Build & deploy → Link repository → `charlesbruder/mraa-site`).
+   This may require installing the Netlify GitHub App on charlesbruder again — one browser click.
 5. Verify: push a trivial commit → auto-deploy runs on the new account's fresh credits.
 6. Michael's account keeps nothing MRAA-related. Done.
 
 ## Option B — Recreate from scratch (fallback, ~30 min)
 Only if transfer fails. New account → Import from Git → select repo → then re-add env vars:
-`ADMIN_PASSWORD`, `ADMIN_SECRET` (generate new: `openssl rand -hex 32`), `GITHUB_TOKEN`.
+`ADMIN_PASSWORD`, `ADMIN_SECRET` (generate new: `openssl rand -hex 32`), `GITHUB_TOKEN`,
+`GHL_API_TOKEN`, `GITHUB_REPO` (`charlesbruder/mraa-site`).
 Re-enable form detection (Site configuration → Forms). Old site must be deleted first
 to free the `mraa-rugby` name, or pick a new name.
+
+**Do not skip `GHL_API_TOKEN`.** Without it, `netlify/functions/submission-created.mjs`
+stops copying form submissions into GoHighLevel. The forms still work and visitors see
+no error, so the only outward sign is a `[GHL]` error line in
+Netlify → Logs → Functions → `submission-created`. It must be a GoHighLevel **Private
+Integration** token (starts with `pit-`) carrying the `contacts.write` and
+`opportunities.write` scopes — an OAuth access token looks identical but expires after
+about 24 hours. Netlify always keeps the submission itself under Forms, so anything
+missed during an outage can be backfilled by hand.
 
 ## Unchanged either way
 - GitHub repo + the Claude editing pipeline (`CLAUDE_CODE_OAUTH_TOKEN` lives in GitHub, not Netlify).
