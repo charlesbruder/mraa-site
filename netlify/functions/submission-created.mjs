@@ -7,6 +7,10 @@
 // leave the full submission as a ready-to-paste Note. History submissions
 // and sponsor inquiries also become pipeline cards. Photos ride along as
 // links in the note; Netlify keeps the original files.
+//
+// Requires the GHL_API_TOKEN environment variable (a GoHighLevel Private
+// Integration token, scopes contacts.write + opportunities.write). If it is
+// missing or revoked, forwarding stops; see the error handler at the bottom.
 
 const GHL = 'https://services.leadconnectorhq.com'
 const LOCATION = 'oxIujJmc19j8tjF3ztoi'
@@ -38,7 +42,11 @@ async function ghl(method, path, body) {
     body: body ? JSON.stringify(body) : undefined,
   })
   const text = await res.text()
-  if (!res.ok) throw new Error(`GHL ${res.status} on ${path}: ${text.slice(0, 300)}`)
+  if (!res.ok) {
+    const err = new Error(`GHL ${res.status} on ${path}: ${text.slice(0, 300)}`)
+    err.status = res.status
+    throw err
+  }
   return text ? JSON.parse(text) : {}
 }
 
@@ -184,16 +192,35 @@ export default async (req) => {
     const data = payload?.data || {}
     const handler = HANDLERS[formName]
     if (!handler) {
-      console.log(`submission-created: no handler for form "${formName}" — skipped`)
+      console.log(`[GHL] no handler for form "${formName}" — skipped`)
       return new Response('skipped', { status: 200 })
     }
-    if (!process.env.GHL_API_TOKEN) throw new Error('GHL_API_TOKEN is not set')
+    if (!process.env.GHL_API_TOKEN) {
+      const err = new Error("GHL_API_TOKEN is not set in this site's environment variables")
+      err.status = 0
+      throw err
+    }
     await handler(data)
-    console.log(`submission-created: forwarded "${formName}" to GHL`)
+    console.log(`[GHL] ok — forwarded "${formName}"`)
     return new Response('ok', { status: 200 })
   } catch (err) {
-    // Never fail hard: Netlify keeps the submission either way.
-    console.error(`submission-created: error forwarding "${formName}": ${err.message}`)
-    return new Response('error logged', { status: 200 })
+    // The submission itself is never at risk: Netlify stores it before invoking
+    // this function and nothing here can discard it. But we return 500 so the
+    // failure lands in Netlify's function error count instead of disappearing —
+    // returning 200 on errors once let this integration sit broken unnoticed.
+    // All lines are prefixed [GHL] so they can be searched in the function log.
+    const credentialProblem = err.status === 0 || err.status === 401 || err.status === 403
+    if (credentialProblem) {
+      console.error(
+        `[GHL] ACTION REQUIRED — "${formName}" was NOT copied into GoHighLevel: ${err.message}. ` +
+          'Every submission will keep failing until the credentials are fixed. Set GHL_API_TOKEN ' +
+          '(a Private Integration token starting "pit-", scopes contacts.write + opportunities.write) ' +
+          'under Netlify → Site configuration → Environment variables, then redeploy. ' +
+          'Nothing is lost: the submissions are still listed under Netlify → Forms.'
+      )
+    } else {
+      console.error(`[GHL] failed to forward "${formName}": ${err.message}`)
+    }
+    return new Response('error logged', { status: 500 })
   }
 }

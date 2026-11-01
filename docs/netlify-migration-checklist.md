@@ -22,9 +22,19 @@ account the organization owns, not inside Zignal's account.
 
 ## Option B — Recreate from scratch (fallback, ~30 min)
 Only if transfer fails. New account → Import from Git → select repo → then re-add env vars:
-`ADMIN_PASSWORD`, `ADMIN_SECRET` (generate new: `openssl rand -hex 32`), `GITHUB_TOKEN`.
+`ADMIN_PASSWORD`, `ADMIN_SECRET` (generate new: `openssl rand -hex 32`), `GITHUB_TOKEN`,
+`GHL_API_TOKEN`.
 Re-enable form detection (Site configuration → Forms). Old site must be deleted first
 to free the `mraa-rugby` name, or pick a new name.
+
+**Do not skip `GHL_API_TOKEN`.** Without it, `netlify/functions/submission-created.mjs`
+stops copying form submissions into GoHighLevel. The forms still work and visitors see
+no error, so the only outward sign is a `[GHL]` error line in
+Netlify → Logs → Functions → `submission-created`. It must be a GoHighLevel **Private
+Integration** token (starts with `pit-`) carrying the `contacts.write` and
+`opportunities.write` scopes — an OAuth access token looks identical but expires after
+about 24 hours. Netlify always keeps the submission itself under Forms, so anything
+missed during an outage can be backfilled by hand.
 
 ## Unchanged either way
 - GitHub repo + the Claude editing pipeline (`CLAUDE_CODE_OAUTH_TOKEN` lives in GitHub, not Netlify).
